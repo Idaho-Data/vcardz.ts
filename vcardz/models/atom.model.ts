@@ -21,10 +21,14 @@ export class Atom {
            '';
   }
 
-
   public toString(): string {
     return (this._tag) ?
            `${this._tag}:${Utility.escapeVcard(this._value)}` :
            '';
   }
+
+  // public toJson(): object {
+  //   // return {[this._tag.property]: {value: this._value,}
+  //   //   this._value};
+  // }
 }

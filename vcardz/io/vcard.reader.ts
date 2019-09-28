@@ -1,5 +1,14 @@
 import { Tag, vCard } from '../models';
-import { Email, FormattedName, Name, Phone } from '../models/properties';
+import {
+  Address,
+  Email,
+  FormattedName,
+  Name,
+  Note,
+  Organization,
+  Phone,
+  Title,
+} from '../models/properties';
 
 
 export class vCardReader {
@@ -34,6 +43,22 @@ export class vCardReader {
 
         case 'TEL':
           card.TEL.add(new Phone(line));
+          break;
+
+        case 'ADR':
+          card.ADR.add(new Address(line));
+          break;
+
+        case 'ORG':
+          card.ORG = new Organization(line);
+          break;
+
+        case 'TITLE':
+          card.TITLE = new Title(line);
+          break;
+
+        case 'NOTE':
+          card.NOTE = new Note(line);
           break;
       }
     });
