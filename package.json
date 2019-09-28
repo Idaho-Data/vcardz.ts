@@ -1,0 +1,27 @@
+{
+  "name": "vcardz.ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "ts-node spec/index.spec.ts || true",
+    "jasmine": "jasmine",
+    "tsc": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jasmine": "^3.4.1",
+    "@types/node": "^12.7.8",
+    "jasmine": "^3.5.0",
+    "jasmine-console-reporter": "^3.1.0",
+    "jasmine-reporters": "^2.3.2",
+    "jasmine-ts": "^0.3.0",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.3"
+  },
+  "dependencies": {
+    "rxjs": "^6.5.3"
+  }
+}
