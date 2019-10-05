@@ -4,7 +4,8 @@ export class TestData {
 BEGIN:VCARD
 VERSION:3.0
 N:Doe;John;;;
-FN:John Doe
+FN;type=display:John Doe
+FN;type=abbreviation:J Doe
 ORG:Example.com Inc.;
 TITLE:Imaginary test person
 EMAIL;type=INTERNET;type=WORK;type=pref:johnDoe@example.org

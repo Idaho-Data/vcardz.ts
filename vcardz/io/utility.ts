@@ -21,15 +21,20 @@ export class Utility
                .replace(':', '\\:');
   }
 
-  public static rawValue(data: string) {
+  public static rawValue(data: string): string {
     return data.split(Utility.vcardSplitRex)
                .slice(1)
                .join(':');
   }
 
-  public static vcardValue(data: string) {
+  public static vcardValue(data: string): string {
     return Utility.unescapeVcard(Utility.rawValue(data));
   }
 
+  public static isBag(data: string): boolean {
+    let value = Utility.rawValue(data);
+    let rex = /(?<!\\);/;
+    return (rex.test(value));
+  }
 
 }

@@ -51,11 +51,15 @@ export class Tag {
     return this._group;
   }
 
-  public get property(): string {
+  public get prop(): string {
     return this._prop;
   }
 
-  public get attributes(): object {
+  public get attr(): object {
+    if (this._attr.size === 0) {
+      return {};
+    }
+
     return Array.from(this._attr.keys())
                 .map(key => {
                   return {[key]: [...this._attr.get(key)!]};
@@ -98,73 +102,12 @@ export class Tag {
   }
 
 
+  public toJSON() {
+    return {
+      prop: this._prop,
+      group: this._group,
+      attr: this.attr
+    };
+  }
+
 }
-
-
-//import re
-//
-//from itertools import chain
-//
-//
-//class Tag:
-//    _prop = None
-//    _attr = None
-//
-//    def __init__(self, data):
-//        try:
-//            _tag = re.split(r'(?<!\\):', data)[0]
-//            attrs = _tag.split(';')
-//            self._prop = attrs.pop(0)
-//            frags = self._prop.split('.')
-//            if 1 < len(frags):
-//                self._prop = frags[1]
-//                self._prop = self._prop.upper()
-//
-//            if None != attrs:
-//                self._attr = {}
-//                for token in attrs:
-//                    (type, val) = token.split('=')
-//                    key = type.upper()
-//                    try:
-//                        self._attr[key] = self._attr[type.upper()] | \
-//                            set([x.lower() for x in val.split(',')])
-//                    except:
-//                        self._attr[key] = set([x.lower()
-//                                               for x in val.split(',')])
-//
-//        except IndexError:
-//            return
-//
-//
-//    @property
-//    def types(self):
-//        return list(chain.from_iterable([self._attr[x] for x in self._attr]))
-//
-//
-//    def __getitem__(self, key):
-//        try:
-//            return self._attr[key.upper()]
-//        except:
-//            return []
-//
-//
-//    def __str__(self):
-//        if None == self._prop:
-//            return ""
-//        else:
-//            return self._prop
-//
-//
-//    def __repr__(self):
-//        if None == self._prop:
-//            return ""
-//        else:
-//            if None == self._attr:
-//                return self._prop
-//            else:
-//                temp = ""
-//                for key in self._attr:
-//                    if 0 == len(self._attr[key]):
-//                        continue
-//                    temp += ";%s=%s" % (key, ','.join(self._attr[key]))
-//                return self._prop + temp

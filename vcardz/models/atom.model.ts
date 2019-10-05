@@ -27,8 +27,7 @@ export class Atom {
            '';
   }
 
-  // public toJson(): object {
-  //   // return {[this._tag.property]: {value: this._value,}
-  //   //   this._value};
-  // }
+  public toJSON(): object {
+    return {value: this._value, tag: this._tag};
+  }
 }

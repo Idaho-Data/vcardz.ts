@@ -1,70 +1,67 @@
+import { ICard } from './icard.interface';
+import { vCardProxy } from './vcard.proxy';
+import { Bag } from './bag.model';
 import { Atom } from './atom.model';
-import {
-  Address,
-  Email,
-  FormattedName,
-  Name,
-  Note,
-  Organization,
-  Phone,
-  Title,
-} from './properties';
 
+export class vCard implements ICard {
+  [key: string]: any;
 
-export class vCard {
-  public ADR: Set<Address> = new Set<Address>();
-  public EMAIL: Set<Email> = new Set<Email>();
-  public FN?: FormattedName;
-  public N?: Name;
-  public NOTE?: Note;
-  public ORG?: Organization;
-  public TEL: Set<Phone> = new Set<Phone>();
-  public TITLE?: Title;
-
-  protected writeOrder = ['FN',
-                          'N',
-                          'TITLE',
-                          'ORG',
-                          'TEL',
-                          'EMAIL',
-                          'ADR',
-                          'NOTE'];
-
-  public constructor() {}
-
-  public toString() {
-    let data = [] as string[];
-    data.push('BEGIN:VCARD');
-    data.push('VERSION:3.0');
-
-    this.writeOrder
-        .forEach(key => {
-          let temp = Reflect.get(this, key);
-          if (temp instanceof Set) {
-            data = data.concat(Array.from(temp as Set<string>)
-                                    .map(x => x.toString()));
-          } else {
-            data.push(temp.toString());
-          }
-        });
-    data.push('END:VCARD\n');
-    return data.join('\n');
+  public create(): vCard {
+    return vCard.create();
   }
 
-  // public toJson() {
-  //   let data = {};
-  //   this.writeOrder
-  //       .forEach(key => {
-  //         let temp = Reflect.get(this, key);
-  //         if (temp instanceof Set) {
-  //           data = data.concat(Array.from(temp as Set<string>)
-  //                                   .map(x => x.toString()));
-  //         } else {
-  //           data.push(temp.toString());
-  //         }
-  //       });
-  //   data.push('END:VCARD\n');
-  //   return data.join('\n');
-  // }
+  public static create(): vCard {
+    return new Proxy( new vCard(), vCardProxy.handler);
+  }
+
+
+  public get groups(): string[] {
+    const rawGroups = Reflect.ownKeys(this)
+                             .map(key => key.toString())
+                             .flatMap(key => {
+                               return Array.from(this[key] as Set<Atom | Bag>)
+                                           .map(item => item.tag.group);
+                             })
+                             .filter(val => !!val);
+    const groupSet = new Set(rawGroups);
+    return [...groupSet].sort();
+  }
+
+
+  public toString(): string {
+    let data = [] as string[];
+    let groups = new Map<string, string[]>();
+
+    const writeProp = (key: string) => {
+      Array.from(this[key] as Set<Atom|Bag>)
+           .forEach(x => {
+             if (x.tag.group) {
+               groups.set(x.tag.group, groups.get(x.tag.group) || [] as string[]);
+               groups.get(x.tag.group)!.push(x.toString());
+             } else {
+               data.push(x.toString());
+             }
+           });
+    };
+
+    writeProp('FN');
+    writeProp('N');
+    Reflect.ownKeys(this)
+           .map(key => key.toString())
+           .filter(key => !(/^FN$|^N$/.test(key)))
+           .forEach(key => writeProp(key));
+
+    // combine data and groups
+    let card = ['BEGIN:VCARD',
+                'VERSION:4.0'];
+    card = [...card, ...data];
+    Array.from(groups.values())
+         .forEach(array => {
+           card = [...card, ...array];
+         });
+    card.push('END:VCARD');
+    return card.join('\n');
+  }
+
 
 }

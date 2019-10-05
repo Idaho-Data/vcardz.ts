@@ -25,41 +25,11 @@ export class vCardReader {
       }
     });
 
-    const card = new vCard();
+    const card = vCard.create();
     fixed.forEach(line => {
       let tag = new Tag(line);
-      switch (tag.property) {
-        case 'FN':
-          card.FN = new FormattedName(line);
-          break;
-
-        case 'N':
-          card.N = new Name(line);
-          break;
-
-        case 'EMAIL':
-          card.EMAIL.add(new Email(line));
-          break;
-
-        case 'TEL':
-          card.TEL.add(new Phone(line));
-          break;
-
-        case 'ADR':
-          card.ADR.add(new Address(line));
-          break;
-
-        case 'ORG':
-          card.ORG = new Organization(line);
-          break;
-
-        case 'TITLE':
-          card.TITLE = new Title(line);
-          break;
-
-        case 'NOTE':
-          card.NOTE = new Note(line);
-          break;
+      if (!['BEGIN','END','VERSION'].includes(tag.prop)) {
+        card[tag.prop] = line;
       }
     });
 

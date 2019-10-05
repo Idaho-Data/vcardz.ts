@@ -10,7 +10,7 @@ const reporter = new _consoleReporter({
                                         timeUnit: 'ms',      // "ms"|"ns"|"s"
                                         timeThreshold: { ok: 500, warn: 1000, ouch: 3000 }, // Object|Number
                                         activity: true,
-                                        emoji: true,         // boolean or emoji-map object
+                                        emoji: true,         // boolean or emoji-_map object
                                         beep: false
                                       });
 

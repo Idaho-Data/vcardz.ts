@@ -32,4 +32,12 @@ export class Bag {
            '';
   }
 
+  public toJSON(): object {
+    return {
+      tag: this._tag,
+      value: this._value,
+      tokens: this._tokens
+    };
+  }
+
 }
