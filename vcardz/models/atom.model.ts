@@ -21,6 +21,10 @@ export class Atom {
            '';
   }
 
+  public set value(val: string) {
+    this._value = val;
+  }
+
   public toString(): string {
     return (this._tag) ?
            `${this._tag}:${Utility.escapeVcard(this._value)}` :

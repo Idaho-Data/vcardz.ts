@@ -48,8 +48,12 @@ export class vCardProxy {
 
 
   protected static getter(card: ICard, prop: string) {
-    if (typeof prop === 'symbol' || (!prop.startsWith('_') && !(prop in card))) {
+    if (typeof prop === 'symbol' || prop.startsWith('_') || !(prop in card)) {
       return undefined;
+    }
+
+    if (card[prop] instanceof Function) {
+      return card[prop];
     }
 
     const set = card[prop] as Set<Atom|Bag>;

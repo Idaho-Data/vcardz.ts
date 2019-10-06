@@ -2,10 +2,6 @@ import {
   Atom,
   vCard,
 } from '../../vcardz/models';
-import {
-  Name,
-  Phone,
-} from '../../vcardz/models/properties';
 
 
 describe('vCard', () => {
@@ -40,5 +36,16 @@ describe('vCard', () => {
     expect(card2.groups).toEqual([]);
   });
 
+  it('Atom value test', () => {
+    const atom1 = new Atom('TITLE');
+    atom1.tag.attr = {language: 'en'};
+    atom1.tag.attr = {language: 'fr'};
+    atom1.value = 'Software Developer';
+    expect(atom1.toString()).toEqual('TITLE;LANGUAGE=en,fr:Software Developer');
+
+    let card = vCard.create();
+    card.TITLE = atom1;
+    expect(card.toString()).toEqual(`BEGIN:VCARD\nVERSION:4.0\n${atom1}\nEND:VCARD`);
+  });
 
 });

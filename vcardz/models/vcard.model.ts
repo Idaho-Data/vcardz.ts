@@ -33,6 +33,9 @@ export class vCard implements ICard {
     let groups = new Map<string, string[]>();
 
     const writeProp = (key: string) => {
+      if (!this[key]) {
+        return;
+      }
       Array.from(this[key] as Set<Atom|Bag>)
            .forEach(x => {
              if (x.tag.group) {

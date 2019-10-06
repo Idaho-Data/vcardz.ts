@@ -1,12 +1,11 @@
-import { from } from 'rxjs';
 import { Utility } from '../io/utility';
+import { IAttributes } from './attributes.interface';
 
 
 export class Tag {
   protected _group: string = '';
   protected _prop: string = '';
   protected _attr: Map<string, Set<string>> = new Map<string, Set<string>>();
-
 
   public constructor(_data: string) {
     try {
@@ -29,15 +28,7 @@ export class Tag {
       }
       attrs.forEach(token => {
         const [type, val] = token.split('=');
-        let key = type.toUpperCase();
-        if (this._attr.has(key)) {
-          let newSet = new Set(val.split(','));
-          let oldSet = this._attr.get(key)!;
-          let set = new Set([...oldSet, ...newSet]);
-          this._attr.set(key, set);
-        } else {
-          this._attr.set(key, new Set(val.split(',')));
-        }
+        this.setAttr(type, val.split(','));
       });
 
     } catch (ex) {
@@ -47,15 +38,41 @@ export class Tag {
     }
   }
 
+  protected setAttr(key: string, val: string[]) {
+    key = key.toUpperCase();
+    if (this._attr.has(key)) {
+      let newSet = new Set(val);
+      let oldSet = this._attr.get(key)!;
+      let set = new Set([...oldSet, ...newSet]);
+      this._attr.set(key, set);
+    } else {
+      this._attr.set(key, new Set(val));
+    }
+  }
+
+
+  // properties
+  //
+  // group
   public get group(): string {
     return this._group;
   }
 
+  public set group(val: string) {
+    this._group = val;
+  }
+
+  // prop
   public get prop(): string {
     return this._prop;
   }
 
-  public get attr(): object {
+  public set prop(val: string) {
+    this._prop = val;
+  }
+
+  // attr
+  public get attr(): IAttributes {
     if (this._attr.size === 0) {
       return {};
     }
@@ -71,6 +88,17 @@ export class Tag {
                         });
                   return accum;
                 });
+  }
+
+  public set attr(attributes: IAttributes) {
+    Object.keys(attributes)
+          .forEach(key => {
+            let val = attributes[key];
+            if (typeof val === 'string') {
+              val = [val];
+            }
+            this.setAttr(key, val);
+          });
   }
 
 
