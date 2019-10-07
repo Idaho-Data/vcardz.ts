@@ -12,7 +12,7 @@ import {
 describe('vCardEngine', () => {
   it('constructor test', () => {
     const parse = new vCardEngine('foobar');
-    expect(parse.data).toEqual('foobar');
+    expect(parse.payload).toEqual('foobar');
   });
 
   it('generator test', () => {

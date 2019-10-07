@@ -54,7 +54,7 @@ export class vCard implements ICard {
            .filter(key => !(/^FN$|^N$/.test(key)))
            .forEach(key => writeProp(key));
 
-    // combine data and groups
+    // combine payload and groups
     let card = ['BEGIN:VCARD',
                 'VERSION:4.0'];
     card = [...card, ...data];

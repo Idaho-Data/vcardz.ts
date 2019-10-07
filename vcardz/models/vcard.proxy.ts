@@ -11,14 +11,14 @@ import {
 
 export class vCardProxy {
 
-  protected static setter(card: ICard, prop: string, value: string|Atom|Bag): boolean {
+  protected static setter(card: ICard, prop: string, value: string|Atom|Bag|ICard): boolean {
     if (!(prop in card)) {
       card[prop] = new Set<Atom|Bag>();
     }
-    const cardProp = card[prop] as Set<Atom|Bag>;
+    const cardProp = card[prop] as Set<Atom|Bag|ICard>;
 
-    if (value instanceof Atom || value instanceof Bag) {
-      cardProp.add(value as Atom|Bag);
+    if (typeof value !== 'string') {
+      cardProp.add(value as Atom|Bag|ICard);
       return true;
     }
 
