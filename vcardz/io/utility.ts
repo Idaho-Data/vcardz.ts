@@ -37,4 +37,20 @@ export class Utility
     return (rex.test(value));
   }
 
+  public static fixPayload(payload: string[]): string[] {
+    // fix multi-line values
+    let fixed = [] as string[];
+    payload.forEach(line => {
+      if (line.split(':').length === 1) {
+        let prev = fixed.pop() || '';
+        prev += line.substr(1).trimRight();
+        fixed.push(prev);
+      } else {
+        fixed.push(line.trim());
+      }
+    });
+
+    return fixed;
+  }
+
 }

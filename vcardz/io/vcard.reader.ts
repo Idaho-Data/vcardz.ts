@@ -1,14 +1,4 @@
 import { Tag, vCard } from '../models';
-import {
-  Address,
-  Email,
-  FormattedName,
-  Name,
-  Note,
-  Organization,
-  Phone,
-  Title,
-} from '../models/properties';
 
 
 export class vCardReader {
