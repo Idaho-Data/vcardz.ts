@@ -1,17 +1,22 @@
 {
   "name": "vcardz.ts",
   "version": "1.0.0",
-  "description": "",
+  "description": "vCard and iCal processing for Javascript and Typescript",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Idaho-Data/vcardz.ts.git"
+  },
+  "author": "Josh Watts",
   "main": "index.js",
+  "keywords": ["vcard", "ical"],
+  "license": "ISC",
   "scripts": {
     "test": "ts-node spec/index.spec.ts || true",
     "test-ide": "node --require ts-node/register spec/index.spec.ts || true",
     "jasmine": "jasmine",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "build": "tsc"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@types/jasmine": "^3.4.1",
     "@types/node": "^12.7.8",
