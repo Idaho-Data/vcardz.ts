@@ -1,6 +1,6 @@
 {
   "name": "vcardz.ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "vCard and iCal processing for Javascript and Typescript",
   "repository": {
     "type": "git",
@@ -9,7 +9,10 @@
   "author": "Josh Watts",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "keywords": ["vcard", "ical"],
+  "keywords": [
+    "vcard",
+    "ical"
+  ],
   "license": "ISC",
   "scripts": {
     "test": "ts-node spec/index.spec.ts || true",
