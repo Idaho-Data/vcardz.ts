@@ -7,7 +7,8 @@
     "url": "git+https://github.com/Idaho-Data/vcardz.ts.git"
   },
   "author": "Josh Watts",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "keywords": ["vcard", "ical"],
   "license": "ISC",
   "scripts": {
