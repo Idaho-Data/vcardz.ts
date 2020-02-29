@@ -22,4 +22,26 @@ describe('iCalEngine', () => {
     // console.info(card.toString());
   });
 
+  it('generator test 2', () => {
+    const engine = new iCalEngine(TestData.event1);
+    // const generator = engine.run();
+    // for (const event of generator) {
+    //   console.info(event.toString());
+    // }
+    // console.info(generator.next().value);
+
+    let iter = engine.run();
+    let curr = iter.next();
+    let count = 0;
+    let eventCount = 0;
+    while (!curr.done) {
+      ++count;
+      let events = [...curr.value.VEVENT];
+      eventCount = events.length;
+      curr = iter.next();
+    }
+    expect(count).toEqual(1);
+    expect(eventCount).toEqual(1);
+  });
+
 });

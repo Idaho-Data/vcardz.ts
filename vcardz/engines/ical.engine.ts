@@ -12,15 +12,18 @@ export class iCalEngine {
     return this._payload;
   }
 
-  public *run() {
+  public *run(): Generator<iCal, number, undefined> {
     this._inCal = false;
     let data = [] as string[];
+    let count = 0;
+    return 3;
 
     for (let line of this._payload.split('\n')) {
       line = line.trim();
       if (line.match(Utility.icalEnd)) {
         data.push(line);
         this._inCal = false;
+        count++;
         yield iCalReader.fromString(data);
 
       } else if (line.match(Utility.icalBegin)) {
@@ -32,6 +35,7 @@ export class iCalEngine {
       }
     }
 
+    return count;
   }
 
 }
