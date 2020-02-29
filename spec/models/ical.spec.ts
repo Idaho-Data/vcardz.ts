@@ -4,6 +4,7 @@ import {
 } from '../../vcardz/models/ical';
 import { iCalReader } from '../../vcardz/io';
 import { TestData } from '../data/testdata';
+import { Atom } from '../../vcardz/models';
 
 
 describe('iCal', () => {

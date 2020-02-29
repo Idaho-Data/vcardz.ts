@@ -1,4 +1,6 @@
 import { ICard } from '../models';
+import { DateTime } from 'luxon';
+import { AssertionError } from 'assert';
 
 
 export class Utility
@@ -9,6 +11,8 @@ export class Utility
   public static phoneNumbers = /\+?1? *\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})(?:[,x ]*)([0-9]*)/;
   public static vcardBegin = /^BEGIN:VCARD$/;
   public static vcardEnd = /^END:VCARD$/;
+  public static icalDateMatch = /(\d{4})(\d{2})(\d{2})T?(\d{2})?(\d{2})?(\d{2})?(Z)?/;
+  public static icalDateReplace = /(\d{4})(\d{2})(\d{2})T?(\d{2})?(\d{2})?(\d{2})?(Z)?/g;
 
   // negative look-behind assertion
   // only match ':' and not '\:'
@@ -63,6 +67,11 @@ export class Utility
 
   public static isICard(obj: any): obj is ICard {
     return (obj as ICard).create !== undefined;
+  }
+
+
+  public static isDateTime(obj: any): obj is DateTime {
+    return obj instanceof DateTime;
   }
 
 
