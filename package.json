@@ -1,6 +1,6 @@
 {
   "name": "vcardz.ts",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "vCard and iCal processing for Javascript and Typescript",
   "repository": {
     "type": "git",
