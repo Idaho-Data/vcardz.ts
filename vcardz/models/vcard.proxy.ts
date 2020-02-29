@@ -58,6 +58,7 @@ export class vCardProxy {
 
     const set = card[prop] as Set<Atom|Bag>;
     switch (prop) {
+      // vcard props
       case 'KIND':
       case 'N':
       case 'BDAY':
@@ -66,6 +67,27 @@ export class vCardProxy {
       case 'PRODID':
       case 'REV':
       case 'UID':
+      // ical props
+      case 'DTSTAMP':
+      case 'UID':
+      case 'DTSTART':
+      case 'CLASS':
+      case 'CREATED':
+      case 'DESCRIPTION':
+      case 'GEO':
+      case 'LAST-MOD':
+      case 'LOCATION':
+      case 'ORGANIZER':
+      case 'PRIORITY':
+      case 'SEQ':
+      case 'STATUS':
+      case 'SUMMARY':
+      case 'TRANSP':
+      case 'URL':
+      case 'RECURID':
+      case 'RRULE':
+      case 'DTEND':
+      case 'DURATION':
         return set.values().next().value;
 
       default:
