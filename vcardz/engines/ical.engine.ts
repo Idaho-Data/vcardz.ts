@@ -16,7 +16,6 @@ export class iCalEngine {
     this._inCal = false;
     let data = [] as string[];
     let count = 0;
-    return 3;
 
     for (let line of this._payload.split('\n')) {
       line = line.trim();
