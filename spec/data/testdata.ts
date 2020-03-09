@@ -39,7 +39,7 @@ BEGIN:VEVENT
 SUMMARY:Abraham Lincoln
 UID:c7614cff-3549-4a00-9152-d25cc1fe077d
 SEQUENCE:0
-pSTATUS:CONFIRMED
+STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 RRULE:FREQ=YEARLY;INTERVAL=1;BYMONTH=2;BYMONTHDAY=12
 DTSTART:20080212
@@ -52,6 +52,40 @@ DESCRIPTION:Born February 12\\, 1809\\nSixteenth President (1861-1865)\\n\\n\\n
  \\nhttp://AmericanHistoryCalendar.com
 URL:http://americanhistorycalendar.com/peoplecalendar/1,328-abraham-lincol
  n
+END:VEVENT
+END:VCALENDAR`;
+
+
+  public static testEvent2 = `
+BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Mueller Timeline
+X-WR-TIMEZONE:America/New_York
+X-WR-CALDESC:Events from the Report on The Investigation Into Russian Inter
+ ference In The 2016 Presidential Election
+BEGIN:VEVENT
+DTSTART:20181207T080000Z
+DTEND:20181207T090000Z
+DTSTAMP:20200308T222237Z
+UID:3c24dgcb8g8sob7h8l5perhh5e@google.com
+CREATED:20200305T073614Z
+DESCRIPTION:President Trump confirmed he would nominate William P. Barr as 
+ the attorney general of the United States to take the spot vacated by Jeff 
+ Sessions. Barr\\, who had served as attorney general in the George H. W. Bus
+ h administration\\, won Senate confirmation on February 14\\, 2019\\, by a 54-
+ 45 vote and took over supervision of the special counsel investigation as i
+ t approached its conclusion.*\\n\\n* Helderman\\, Rosalind S. and Zapotosky\\, 
+ Matt. The Mueller Report: The Washington Post. Scribner\\, 2019\\, p49
+LAST-MODIFIED:20200306T043924Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:President Trump nominates William P. Barr as attorney general of th
+ e United States
+TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR`;
 

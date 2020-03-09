@@ -1,0 +1,473 @@
+BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Mueller Timeline
+X-WR-TIMEZONE:America/New_York
+X-WR-CALDESC:Events from the Report on The Investigation Into Russian Inter
+ ference In The 2016 Presidential Election
+BEGIN:VEVENT
+DTSTART:20181207T080000Z
+DTEND:20181207T090000Z
+DTSTAMP:20200308T222237Z
+UID:3c24dgcb8g8sob7h8l5perhh5e@google.com
+CREATED:20200305T073614Z
+DESCRIPTION:President Trump confirmed he would nominate William P. Barr as 
+ the attorney general of the United States to take the spot vacated by Jeff 
+ Sessions. Barr\, who had served as attorney general in the George H. W. Bus
+ h administration\, won Senate confirmation on February 14\, 2019\, by a 54-
+ 45 vote and took over supervision of the special counsel investigation as i
+ t approached its conclusion.*\n\n* Helderman\, Rosalind S. and Zapotosky\, 
+ Matt. The Mueller Report: The Washington Post. Scribner\, 2019\, p49
+LAST-MODIFIED:20200306T043924Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:President Trump nominates William P. Barr as attorney general of th
+ e United States
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20180222
+DTEND;VALUE=DATE:20180223
+DTSTAMP:20200308T222237Z
+UID:3v8u0aehuf8mf4kuq8evmm3rv7@google.com
+CREATED:20200305T060824Z
+DESCRIPTION:Manafort and Gates were charged again\, this time in Alexandria
+ \, Virginia\, with thirty-two counts related to tax and bank fraud.
+LAST-MODIFIED:20200306T041841Z
+LOCATION:Alexandria\, VA\, USA
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Manafort and Gates charged with thirty-two counts related to tax an
+ d bank fraud
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20170517
+DTEND;VALUE=DATE:20170518
+DTSTAMP:20200308T222237Z
+UID:0osnmdp8mpbvi5salg4osksmnf@google.com
+CREATED:20190705T031632Z
+DESCRIPTION:Deputy Attorney General Rod J. Rosenstein appointed Robert S. M
+ ueller III to serve as special counsel investigating any coordination betwe
+ en Russia and individuals associated with the Trump campaign\, as well as a
+ ny matters that might arise from the investigation.*\n\n* Helderman\, Rosal
+ ind S. and Zapotosky\, Matt. The Mueller Report: The Washington Post. Scrib
+ ner\, 2019\, p47
+LAST-MODIFIED:20200305T102224Z
+LOCATION:U.S. Department of Justice\, 950 Pennsylvania Ave NW\, Washington\
+ , DC 20530\, USA
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Robert S. Mueller III to serve as special counsel
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20190324
+DTEND;VALUE=DATE:20190325
+DTSTAMP:20200308T222237Z
+UID:524aiikg38jh6nmdrb09cupnjg@google.com
+CREATED:20200305T080526Z
+DESCRIPTION:Barr submitted to Congress a four-page summary of Mueller's pri
+ ncipal conclusions. Barr indicated that Mueller found that the evidence did
+  not establish that Trump or anyone associated with his campaign conspired 
+ with Russia to interfere in the election. Barr said that Mueller  conducted
+  a thorough finding of facts related to the issue of whether Trump had comm
+ itted obstruction of justice but ultimately did not make a traditional reco
+ mmendation as to whether to prosecute the president. In his report\, Barr i
+ ndicated that Mueller wrote\, "while this report does not conclude that the
+  President committed a crime\, it also does not exonerate home." Barr told 
+ Congress that he and Rosenstein did not believe there was sufficient eviden
+ ce to accuse Trump of obstruction.
+LAST-MODIFIED:20200305T080526Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Barr submitted to Congress a four-page summary of Mueller's princip
+ al conclusions
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20190322
+DTEND;VALUE=DATE:20190323
+DTSTAMP:20200308T222237Z
+UID:68h56mnnch5ba243ujutsn0boj@google.com
+CREATED:20200305T080008Z
+DESCRIPTION:Attorney General William p. Barr informed Congress that Mueller
+  had completed his investigation and submitted a final confidential report.
+  A Justice Department official said there would be no more indictments as a
+  result of the investigation.*\n\n* Helderman\, Rosalind S. and Zapotosky\,
+  Matt. The Mueller Report: The Washington Post. Scribner\, 2019\, p50
+LAST-MODIFIED:20200305T080008Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Attorney General Barr informed Congress Mueller had completed his i
+ nvestigation
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20190124
+DTEND;VALUE=DATE:20190125
+DTSTAMP:20200308T222237Z
+UID:27i33l1f7j5r04c6jk8mmq663g@google.com
+CREATED:20200305T075814Z
+DESCRIPTION:Roger Stone\, longtime Republican campaign operative and friend
+  of Trump who briefly worked for the Trump campaign\, was charged with tryi
+ ng to obstruct a Congressional inquiry into the hacking of emails from the 
+ Democratic National Committee and John Podesta\, Hillary Clinton's campaign
+  chairman. Stone\, who vowed to fight the charges\, was accused of lying to
+  Congress about his efforts to obtain information about WikiLeak's releases
+  of the material.
+LAST-MODIFIED:20200305T075814Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Roger Stone charged with trying to obstruct a Congressional inquiry
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20181218
+DTEND;VALUE=DATE:20181219
+DTSTAMP:20200308T222237Z
+UID:6aoo4mu86ed3jbm47u6fer1rq5@google.com
+CREATED:20200305T074533Z
+DESCRIPTION:Flynn asked the court to hold off sentencing him for lying to t
+ he FBI after Judge Emmett G. Sullivan told the retied lieutenant general th
+ at he had sold out his country and suggested he was likely to sentence the 
+ former national security adviser to prison time\, over a recommendation fro
+ m Muller's team.*\n\n* Helderman\, Rosalind S. and Zapotosky\, Matt. The Mu
+ eller Report: The Washington Post. Scribner\, 2019\, p50
+LAST-MODIFIED:20200305T074533Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Flynn asked the court to hold off sentencing 
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20181212
+DTEND;VALUE=DATE:20181213
+DTSTAMP:20200308T222237Z
+UID:6vb57ii6pf26nvp70k79hh1uuh@google.com
+CREATED:20200305T074249Z
+DESCRIPTION:Cohen sentenced to three years in prison and said at an emotion
+ al hearing that he had "been living in a personal and mental incarceration"
+  since going to work for Trump.
+LAST-MODIFIED:20200305T074249Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Cohen sentenced to three years in prison
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20181129
+DTEND;VALUE=DATE:20181130
+DTSTAMP:20200308T222237Z
+UID:20of36ur6vics3c11s4famvnik@google.com
+CREATED:20200305T072916Z
+DESCRIPTION:Michael Cohen\, a former personal attorney to Trump\, pleaded g
+ uilty to lying to Congress about the extent of efforts to build a Trump Tow
+ er in Moscow during the campaign\, including his contacts with the Kremlin 
+ about the project. He agreed to cooperate with Mueller. He had previously p
+ leaded guilty in a separate investigation to campaign finance violations he
+  said were directed by Trump.*\n\n* Helderman\, Rosalind S. and Zapotosky\,
+  Matt. The Mueller Report: The Washington Post. Scribner\, 2019\, p49
+LAST-MODIFIED:20200305T072916Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Michael Cohen pleaded guilty to lying to Congress
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20181126
+DTEND;VALUE=DATE:20181127
+DTSTAMP:20200308T222237Z
+UID:76hmn6e289ot4v4oub7qfs213d@google.com
+CREATED:20200305T072536Z
+DESCRIPTION:\nMueller's prosecutors informed a judge that Manafort had brea
+ ched his plea agreement by lying to investigators during twelve interviews 
+ and two sessions in front of Mueller's grand jury.*\n\n* Helderman\, Rosali
+ nd S. and Zapotosky\, Matt. The Mueller Report: The Washington Post. Scribn
+ er\, 2019\, p49
+LAST-MODIFIED:20200305T072646Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Mueller's prosecutor's informed a judge Manafort breached his plea 
+ agreement
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20180907
+DTEND;VALUE=DATE:20180908
+DTSTAMP:20200308T222237Z
+UID:1indtcfaa67iaabe6s7i6b028v@google.com
+CREATED:20200305T070548Z
+DESCRIPTION:Papadopoulos sentenced to fourteen days in prison for lying to 
+ investigators\, becoming the first Trump adviser to be incarcerated as a re
+ sult of the Mueller probe.*\n\n* Helderman\, Rosalind S. and Zapotosky\, Ma
+ tt. The Mueller Report: The Washington Post. Scribner\, 2019\, p48
+LAST-MODIFIED:20200305T072636Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Papadopoulos sentenced to fourteen days in prison
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20180914
+DTEND;VALUE=DATE:20180915
+DTSTAMP:20200308T222237Z
+UID:64q6h90lg423t186q1jqtsbhr0@google.com
+CREATED:20200305T071713Z
+DESCRIPTION:Avoiding a second trial in Washington\, Manafort pleaded guilty
+  to conspiracy against the United States and other crimes\, admitting he co
+ mmitted bank and tax fraud\, failed to properly register as a foreign agent
+  while working as a political consultant in Ukraine\, and attempted to tamp
+ er with witness testimony. He agreed to cooperate with Mueller.*\n\n* Helde
+ rman\, Rosalind S. and Zapotosky\, Matt. The Mueller Report: The Washington
+  Post. Scribner\, 2019\, p49
+LAST-MODIFIED:20200305T072612Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Manafort pleaded guilty to conspiracy
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20181107
+DTEND;VALUE=DATE:20181108
+DTSTAMP:20200308T222237Z
+UID:1i5cvb71jpq6npab9luii7hga0@google.com
+CREATED:20200305T072050Z
+DESCRIPTION:\nAfter months of badgering Attorney General Jeff Sessions over
+  his decision to recuse himself from the Russia investigation\, President T
+ rump requested Session's resignation. He was replaced by Acting Attorney Ge
+ neral Matthew Whitaker\, who assumed supervisory control of the Mueller inv
+ estigation\, and later rejected the advice of career ethics officials who t
+ hought he should recuse himself.*\n\n* Helderman\, Rosalind S. and Zapotosk
+ y\, Matt. The Mueller Report: The Washington Post. Scribner\, 2019\, p49
+LAST-MODIFIED:20200305T072603Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:President Trump requested Attorney General Jeff Sessions's resignat
+ ion
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20181120
+DTEND;VALUE=DATE:20181121
+DTSTAMP:20200308T222237Z
+UID:51cmnspcsl4vjdf9mvdpih9r6r@google.com
+CREATED:20200305T072323Z
+DESCRIPTION:After months of negotiations over whether Trump would sit for a
+ n interview\, lawyers for the president submitted answers in writing to que
+ stions about the campaign from prosecutors. The president's lawyers refused
+  to answer questions about Trump's decisions after taking office.*\n\n* Hel
+ derman\, Rosalind S. and Zapotosky\, Matt. The Mueller Report: The Washingt
+ on Post. Scribner\, 2019\, p49
+LAST-MODIFIED:20200305T072552Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Lawyers for the president submitted answers in writing to prosecuto
+ rs
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20180716
+DTEND;VALUE=DATE:20180717
+DTSTAMP:20200308T222237Z
+UID:34pqldg2ggkqrt5k6vub9v5tp8@google.com
+CREATED:20200305T065730Z
+DESCRIPTION:Manafort's bail was revoked in the wake of witness-tampering ac
+ cusations\; the former Trump campaign chairman was jailed.*\n\n* Helderman\
+ , Rosalind S. and Zapotosky\, Matt. The Mueller Report: The Washington Post
+ . Scribner\, 2019\, p48
+LAST-MODIFIED:20200305T070409Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Manafort's bail revoked
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20180713
+DTEND;VALUE=DATE:20180714
+DTSTAMP:20200308T222237Z
+UID:3cqrb7fsjvvefdljo79ivosdgu@google.com
+CREATED:20200305T065559Z
+DESCRIPTION:Twelve Russian military intelligence officers were charged with
+  participating in a scheme to hack email accounts of Democrats and publish 
+ correspondence stolen from the Democratic National Committee and Hillary Cl
+ inton's campaign chairman\, John Podesta\, via WikiLeaks.*\n\n* Helderman\,
+  Rosalind S. and Zapotosky\, Matt. The Mueller Report: The Washington Post.
+  Scribner\, 2019\, p48
+LAST-MODIFIED:20200305T070358Z
+LOCATION:
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Twelve Russian military intelligence officers charged with email ha
+ cking scheme
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20180223
+DTEND;VALUE=DATE:20180224
+DTSTAMP:20200308T222237Z
+UID:728dane6c80v7k1hio5et4omvr@google.com
+CREATED:20200305T064949Z
+DESCRIPTION:Gates pleaded guilty to conspiracy to defraud the United States
+  and lying to federal investigators and agreed to cooperate with Mueller.*\
+ n\n* Helderman\, Rosalind S. and Zapotosky\, Matt. The Mueller Report: The 
+ Washington Post. Scribner\, 2019\, p48
+LAST-MODIFIED:20200305T070348Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Rick Gates pleads guilty
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20180821
+DTEND;VALUE=DATE:20180822
+DTSTAMP:20200308T222237Z
+UID:6ud2c8r8hnec1aphc9fnu19k79@google.com
+CREATED:20200305T065947Z
+DESCRIPTION:After a three-week trial\, Manafort was convicted of eight coun
+ ts of tax and bank fraud by a jury in Alexandria\, Virginia. The star witne
+ ss against Manafort was his former deputy Gates.*\n\n\n* Helderman\, Rosali
+ nd S. and Zapotosky\, Matt. The Mueller Report: The Washington Post. Scribn
+ er\, 2019\, p30
+LAST-MODIFIED:20200305T070327Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Manafort convicted of eight counts of tax and bank fraud
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20180831
+DTEND;VALUE=DATE:20180901
+DTSTAMP:20200308T222237Z
+UID:7p9hco7hf49qjdkq26ot56v19b@google.com
+CREATED:20200305T070300Z
+DESCRIPTION:W. Samuel Patten\, a political consultant\, pleaded guilty to f
+ ailing to register as a foreign lobbyist and admitted in an agreement with 
+ prosecutors that he steered $50\,000 from a Ukrainian politician to Donald 
+ Trump's inaugural committee. Patten's case was technically handled by the U
+ S Attorney's Office in Washington\, not Mueller's team\, though it started 
+ with a referral from Mueller.*\n\n* Helderman\, Rosalind S. and Zapotosky\,
+  Matt. The Mueller Report: The Washington Post. Scribner\, 2019\, p48
+LAST-MODIFIED:20200305T070300Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:W. Samuel Patten pleaded guilty to failing to register as a foreign
+  lobbyist
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20180608
+DTEND;VALUE=DATE:20180609
+DTSTAMP:20200308T222237Z
+UID:162g1t4642bi97a566phb45he4@google.com
+CREATED:20200305T065341Z
+DESCRIPTION:Manafort was charged\, along with Konstantin Kilimnik\, a Russi
+ an with alleged ties to Russian intelligence who worked with Manafort in Uk
+ raine\, in a plot to obstruct justice by contacting potential witnesses aga
+ inst Manafort and suborning perjury. Kilimnik has denied having ties to Rus
+ sian intelligence\, but has not publicly addressed the obstruction charge.*
+ \n\n* Helderman\, Rosalind S. and Zapotosky\, Matt. The Mueller Report: The
+  Washington Post. Scribner\, 2019\, p48
+LAST-MODIFIED:20200305T065341Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Manafort and Konstantin Kilimnik charged with obstruction of justic
+ e
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20171030
+DTEND;VALUE=DATE:20171031
+DTSTAMP:20200308T222237Z
+UID:57647m2voi8ai67qb9sf6md6fu@google.com
+CREATED:20190705T032421Z
+DESCRIPTION:Former Trump campaign chairmen Paul Manafort and his deputy\, R
+ ick Gates\, were charged in Washington\, DC\, with conspiracy to defraud th
+ e United States and other crimes related to their work as political consult
+ ants in Ukraine prior to joining the Trump campaign.*\n\n* Helderman\, Rosa
+ lind S. and Zapotosky\, Matt. The Mueller Report: The Washington Post. Scri
+ bner\, 2019\, p47
+LAST-MODIFIED:20200305T060220Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Paul Manafort and Rick Gates charged with conspiracy to defraud the
+  United States
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20180216
+DTEND;VALUE=DATE:20180217
+DTSTAMP:20200308T222237Z
+UID:7f5vvr2n1rd4315r21qfijji7q@google.com
+CREATED:20190705T032839Z
+DESCRIPTION:Thirteen Russian nationals and three Russian companies ere char
+ ged with conducting an elaborate two-year scheme to influence the US electi
+ on by disseminating fake news and divisive advertising online and posing as
+  Americans to inject toxic messages into online debate.*\n\n* Helderman\, R
+ osalind S. and Zapotosky\, Matt. The Mueller Report: The Washington Post. S
+ cribner\, 2019\, p47
+LAST-MODIFIED:20200305T055415Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Russians charged in scheme to influence the US election
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20171201
+DTEND;VALUE=DATE:20171202
+DTSTAMP:20200308T222237Z
+UID:3j8sm2j1cp226nc1nvd8se0v04@google.com
+CREATED:20190705T032607Z
+DESCRIPTION:Former national security adviser Michael T. Flynn pleaded guilt
+ y in federal court in Washington\, DC\, to lying to the FBI about his inter
+ actions during the presidential transition with Russian ambassador Sergey K
+ islyak.*\n\n* Helderman\, Rosalind S. and Zapotosky\, Matt. The Mueller Rep
+ ort: The Washington Post. Scribner\, 2019\, p47
+LAST-MODIFIED:20200305T055403Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Michael Flynn pleaded guilty to lying to the FBI
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20171005
+DTEND;VALUE=DATE:20171006
+DTSTAMP:20200308T222237Z
+UID:0vrbm2oj2vrbv2k6h0gc4qgtlh@google.com
+CREATED:20190705T032105Z
+DESCRIPTION:George Papadopoulos\, a former adviser to the Trump campaign\, 
+ pleaded guilty to lying to the FBI about his Russia contacts during the pre
+ sidential campaign. His plea was unsealed and made public at the end of Oct
+ ober\; he was arrested over the summer in secret and had been negotiating w
+ ith prosecutors.*\n\n* Helderman\, Rosalind S. and Zapotosky\, Matt. The Mu
+ eller Report: The Washington Post. Scribner\, 2019\, p47
+LAST-MODIFIED:20200305T055216Z
+LOCATION:
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:George Papadopoulos pleaded guilty
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -18,14 +18,15 @@ export class iCalEngine {
     let count = 0;
 
     for (let line of this._payload.split('\n')) {
-      line = line.trim();
-      if (line.match(Utility.icalEnd)) {
+      // line = line.trim();
+      const lineCheck = line.trim();
+      if (lineCheck.match(Utility.icalEnd)) {
         data.push(line);
         this._inCal = false;
         count++;
         yield iCalReader.fromString(data);
 
-      } else if (line.match(Utility.icalBegin)) {
+      } else if (lineCheck.match(Utility.icalBegin)) {
         this._inCal = true;
         data = [line];
 

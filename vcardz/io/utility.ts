@@ -18,11 +18,13 @@ export class Utility
   // only match ':' and not '\:'
   public static vcardSplitRex = /(?<!\\):/;
   public static nonHttpColon = /(?<!http):/;
+  public static foldedLine = /^\s/;
+
 
   public static unescapeVcard(data: string): string {
-    return data.replace('\\,', ',')
-               .replace('\\;', ';')
-               .replace('\\:', ':');
+    return data.replace(/\\,/gi, ',')
+               .replace(/\\;/gi, ';')
+               .replace(/\\:/gi, ':');
   }
 
   public static escapeVcard(data: string): string {
@@ -51,13 +53,14 @@ export class Utility
     // fix multi-line values
     let fixed = [] as string[];
     payload.forEach(line => {
-      if (line.split(this.nonHttpColon).length === 1) {
+      if (this.foldedLine.test(line)) {
+      // if (line.split(this.nonHttpColon).length === 1) {
         // line is a continuation of the previous line
         let prev = fixed.pop() || '';
-        prev += line.substr(1).trimRight();
+        prev += this.unescapeVcard(line.substr(1));
         fixed.push(prev);
       } else {
-        fixed.push(line.trim());
+        fixed.push(line);
       }
     });
 
