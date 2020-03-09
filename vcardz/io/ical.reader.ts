@@ -25,13 +25,13 @@ export class iCalReader {
         return;
       }
 
-      if ('BEGIN:VEVENT' === line) {
+      if ('BEGIN:VEVENT' === line.trim()) {
         inEvent = true;
         event = Event.create();
         return;
       }
 
-      if ('END:VEVENT' === line) {
+      if ('END:VEVENT' === line.trim()) {
         cal['VEVENT'] = event;
         inEvent = false;
         return;
