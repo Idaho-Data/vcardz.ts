@@ -61,6 +61,7 @@ describe('iCalEngine', () => {
         ' approached its conclusion.*\\n\\n* Helderman, Rosalind S. and Zapotosky,' +
         ' Matt. The Mueller Report: The Washington Post. Scribner, 2019, p49';
       expect(testValue).toEqual(events[0].DESCRIPTION.value);
+      expect('TRANSPARENT').toEqual(events[0].TRANSP.value);
       curr = iter.next();
     }
   });
