@@ -38,12 +38,12 @@ export class iCalReader {
       }
 
       if (inEvent) {
-        event[tag.prop] = line;
+        event[tag.prop] = line.trim();
         return;
       }
 
 
-      cal[tag.prop] = line;
+      cal[tag.prop] = line.trim();
     });
 
     return cal;
