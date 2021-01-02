@@ -27,11 +27,13 @@ export class Item {
 
   // pubDate
   _pubDate: Date = new Date();
-  public set pubDate(value: string|Date) {
-    this._pubDate = new Date(value);
+  public set pubDate(value: Date) {
+    this._pubDate = (typeof value === 'string') ?
+                    new Date(value) :
+                    value;
   }
 
-  public get pubDate(): string|Date {
+  public get pubDate(): Date {
     return this._pubDate;
   }
 

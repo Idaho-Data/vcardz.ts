@@ -4,6 +4,7 @@ import { Type } from 'class-transformer';
 
 
 export class Rss {
+  version = '';
 
   @Type(() => Channel)
   channel: Channel = new Channel();

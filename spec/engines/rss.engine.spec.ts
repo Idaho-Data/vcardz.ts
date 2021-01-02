@@ -1,6 +1,10 @@
 import { RssEngine } from '../../vcardz/engines/rss.engine';
 import { TestData } from '../data/testdata';
-import { Item } from '../../vcardz/models/rss';
+import {
+  Channel,
+  Item,
+  Rss,
+} from '../../vcardz/models/rss';
 
 
 describe('rssEngine', () => {
@@ -14,6 +18,27 @@ describe('rssEngine', () => {
     let result = engine.run().next().value;
     expect(result instanceof Item).toEqual(true);
   });
+
+
+  it('rss feed test', () => {
+    const engine = new RssEngine(TestData.rssFeedNyTimes);
+    const feed = engine.feed;
+    expect(feed instanceof Rss).toEqual(true);
+    expect('2.0').toEqual(feed.version);
+  });
+
+
+  it('rss channel test', () => {
+    const engine = new RssEngine(TestData.rssFeedNyTimes);
+    const channel = engine.feed.channel;
+    expect(channel instanceof Channel).toEqual(true);
+    expect('NYT > Top Stories').toEqual(channel.title);
+    expect('en-us').toEqual(channel.language);
+
+    const testDate = new Date('2021-01-02T16:43:12.000Z');
+    expect(testDate).toEqual(channel.pubDate);
+  });
+
 
   it ('item description test', () => {
     const engine = new RssEngine(TestData.rssFeed20);

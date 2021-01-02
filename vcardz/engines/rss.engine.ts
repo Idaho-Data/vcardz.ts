@@ -12,30 +12,41 @@ import {
 } from 'class-transformer';
 
 
-
 export class RssEngine {
-  public constructor(protected _payload: string) {}
+  _feed: Rss = new Rss();
+
+  public constructor(protected _payload: string) {
+    this.parse();
+  }
 
   public get payload(): string {
     return this._payload;
   }
 
-  public *run(): Generator<Item, number, undefined> {
+
+  protected parse() {
     const options = {
-      // ignoreNameSpace: true,
       attributeNamePrefix: '',
       ignoreAttributes: false,
       stopNodes: ['description', 'media:description']
     };
-    const json = parse(this._payload, options);
-    const feed = plainToClass(Rss, json.rss);
+    const payloadObj = parse(this._payload, options);
+    this._feed = plainToClass(Rss, payloadObj.rss);
+  }
 
+
+  public *run(): Generator<Item, number, undefined> {
     let count = 0;
-    for (let item of feed.channel.item) {
+    for (let item of this._feed.channel.item) {
       count++;
       yield item;
     }
-
     return count;
   }
+
+
+  public get feed(): Rss {
+    return this._feed;
+  }
+
 }
