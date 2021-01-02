@@ -1,4 +1,4 @@
-import { RssEngine } from '../../vcardz/engines/rss.engine';
+import { RssEngine } from '../../vcardz/engines';
 import { TestData } from '../data/testdata';
 import {
   Channel,
