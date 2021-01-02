@@ -1,6 +1,10 @@
+import 'reflect-metadata';
 import { Channel } from './channel.model';
+import { Type } from 'class-transformer';
 
 
 export class Rss {
-  channels = [] as Channel[];
+
+  @Type(() => Channel)
+  channel: Channel = new Channel();
 }
