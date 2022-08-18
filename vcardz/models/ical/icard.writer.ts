@@ -1,12 +1,13 @@
-import {
-  Atom,
-  Bag,
-  ICard,
-} from '../models';
-import { Utility } from './utility';
+import { Atom } from '../atom.model';
+import { Bag } from '../bag.model';
+import { ICard } from '../icard.interface';
 
 
 export class ICardWriter {
+  public static isICard(obj: any): obj is ICard {
+    return (obj as ICard).create !== undefined;
+  }
+
   public static toString(obj: ICard,
                          propOrder: string[],
                          endcaps: string[]) {
@@ -19,7 +20,7 @@ export class ICardWriter {
       }
       Array.from(obj[key] as Set<Atom|Bag|ICard>)
            .forEach(x => {
-             if (Utility.isICard(x)) {
+             if (ICardWriter.isICard(x)) {
                data = [...data,
                        ...x.toString().split('\n')];
                return;

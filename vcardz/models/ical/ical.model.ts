@@ -3,7 +3,8 @@ import { vCardProxy } from '../vcard.proxy';
 import { Atom } from '../atom.model';
 import { Bag } from '../bag.model';
 import { Utility } from '../../io/utility';
-import { ICardWriter } from '../../io';
+import { ICardWriter } from './icard.writer';
+
 
 
 export class iCal implements ICard {

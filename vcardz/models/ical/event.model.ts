@@ -1,6 +1,6 @@
 import { ICard } from '../icard.interface';
 import { vCardProxy } from '../vcard.proxy';
-import { ICardWriter } from '../../io';
+import { ICardWriter } from './icard.writer';
 
 
 export class Event implements ICard {
