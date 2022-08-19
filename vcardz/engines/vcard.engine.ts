@@ -157,63 +157,70 @@ export class vCardEngine {
 
 
   public vcardMerge(card1: vCard, card2: vCard): vCard {
-    const result = vCard.create();
+    let result = vCard.create();
+    result = this.mergeCopy(result, card1);
+    result = this.mergeCopy(result, card2);
+    result = this.mergeCleanup(result);
+    return result;
+  }
 
-    const copy = (src: vCard) => {
-      for (let prop in src) {
-        if (src[prop] instanceof Array) {
-          [...src[prop]].forEach(item => {
-            if (!result[prop]) {
-              result[prop] = item.toString();
-              return;
+
+  // merge helper functions
+  protected mergeCopy(target: vCard, src: vCard): vCard {
+    for (let prop in src) {
+      if (src[prop] instanceof Array) {
+        [...src[prop]].forEach(item => {
+          if (!target[prop]) {
+            target[prop] = item.toString();
+            return;
+          }
+
+          let found = [...target[prop]].find(_item => {
+            if (_item.hash === item.hash) {
+              return true;
             }
 
-            let found = [...result[prop]].find(_item => {
-              if (_item.hash === item.hash) {
-                return true;
-              }
+            // values matched but tag is different; ensure tags are in the same group
+            if ( _item.tag.group === item.tag.group && _item.valueHash === item.valueHash) {
+              // merge tag attribute maps
+              const attrSet = [_item.tag.attr, item.tag.attr].filter(_attr => _attr && Object.keys(_attr).length > 0);
+              const attrKeys = new Set([...attrSet.flatMap(_attr => Object.keys(_attr))]);
 
-              // values matched but tag is different; ensure tags are in the same group
-              if ( _item.tag.group === item.tag.group && _item.valueHash === item.valueHash) {
-                // merge tag attribute maps
-                const attrSet = [_item.tag.attr, item.tag.attr].filter(_attr => _attr && Object.keys(_attr).length > 0);
-                const attrKeys = new Set([...attrSet.flatMap(_attr => Object.keys(_attr))]);
-
-                const attributes = [...attrKeys].reduce((obj:any, key) => {
-                  const vals = attrSet.flatMap(_attr => _attr[key]);
-                  obj[key] = vals;
-                  return obj;
-                }, {});
-                _item.tag.attr = attributes;
-                return true;
-              }
-
-            });
-            if (!found) {
-              result[prop] = item.toString();
+              const attributes = [...attrKeys].reduce((obj:any, key) => {
+                const vals = attrSet.flatMap(_attr => _attr[key]);
+                obj[key] = vals;
+                return obj;
+              }, {});
+              _item.tag.attr = attributes;
+              return true;
             }
+
           });
-
-        } else {
-          if (!result[prop]) {
-            result[prop] = src[prop].toString();
+          if (!found) {
+            target[prop] = item.toString();
           }
+        });
 
-          if (result[prop].hash !== src[prop].hash) {
-            result[prop] = src[prop].toString();
-          }
+      } else {
+        if (!target[prop]) {
+          target[prop] = src[prop].toString();
+        }
+
+        if (target[prop].hash !== src[prop].hash) {
+          target[prop] = src[prop].toString();
         }
       }
-    };
+    } // end for
 
-    copy(card1);
-    copy(card2);
+    return target;
+  }
 
-    // perform merge cleanup
-    if (result[VCARD_FN]) {
+
+  protected mergeCleanup(target: vCard): vCard {
+    if (target[VCARD_FN]) {
       // de-dupe formal names
       // need to partition by tag to account for attributes
-      const fnBuckets = result[VCARD_FN].reduce((map: Map<string, string>, atom: Atom) => {
+      const fnBuckets = target[VCARD_FN].reduce((map: Map<string, string>, atom: Atom) => {
         const tag = atom.tag.toString();
         const oldName = map.has(tag) ? map.get(tag) as string
                                      : '';
@@ -224,17 +231,16 @@ export class vCardEngine {
         return map;
       }, new Map<string, string>());
 
-      delete result[VCARD_FN];
+      delete target[VCARD_FN];
       [...fnBuckets.keys()].forEach((tag: string) => {
-        result[VCARD_FN] = `${tag}:${fnBuckets.get(tag)}`;
+        target[VCARD_FN] = `${tag}:${fnBuckets.get(tag)}`;
       });
     }
 
-
-    if (result[VCARD_CATEGORIES]) {
+    if (target[VCARD_CATEGORIES]) {
       // de-dupe categories
       // need to partition by tag to account for attributes
-      const categoryBuckets = result[VCARD_CATEGORIES].reduce((map: Map<string, Set<string>>, cat: Categories) => {
+      const categoryBuckets = target[VCARD_CATEGORIES].reduce((map: Map<string, Set<string>>, cat: Categories) => {
         const tag = cat.tag.toString();
         const tokens: Set<string> = (map.has(tag)) ? map.get(tag) as Set<string>
                                                    : new Set<string>();
@@ -244,7 +250,7 @@ export class vCardEngine {
         return map;
       }, new Map<string, Set<string>>);
 
-      delete result[VCARD_CATEGORIES];
+      delete target[VCARD_CATEGORIES];
       [...categoryBuckets.keys()].forEach((tag: string) => {
         // case-insensitive sort categories
         const cats = [...categoryBuckets.get(tag)].sort((a, b) => {
@@ -259,12 +265,11 @@ export class vCardEngine {
                                                     return 0;
                                                   })
                                                   .join(',');
-        result[VCARD_CATEGORIES] = `${tag}:${cats}`;
+        target[VCARD_CATEGORIES] = `${tag}:${cats}`;
       });
-
     }
 
-    return result;
+    return target;
   }
 
 }

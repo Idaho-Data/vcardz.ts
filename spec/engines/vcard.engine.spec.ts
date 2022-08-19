@@ -28,9 +28,9 @@ describe('vCardEngine', () => {
   it('vCard fscrub test 1', () => {
     const payload = readFileSync('./spec/data/dupe-1.vcf', 'utf-8');
     const engine = new vCardEngine(payload);
-    const scrubbed = engine.fscrub(engine.vcardFeatures,
-                                   engine.vcardMatch,
-                                   engine.vcardMerge);
+    const scrubbed = engine.fscrub(engine.vcardFeatures.bind(engine),
+                                   engine.vcardMatch.bind(engine),
+                                   engine.vcardMerge.bind(engine));
     expect(2).toEqual(scrubbed.length);
   });
 
