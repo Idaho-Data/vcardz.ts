@@ -161,7 +161,27 @@ export class vCardEngine {
               return;
             }
 
-            let found = [...result[prop]].find(_item => _item.hash === item.hash);
+            let found = [...result[prop]].find(_item => {
+              if (_item.hash === item.hash) {
+                return true;
+              }
+
+              // values matched but tag is different
+              if (_item.valueHash === item.valueHash) {
+                // merge tag attribute maps
+                const attrSet = [_item.tag.attr, item.tag.attr].filter(_attr => _attr && Object.keys(_attr).length > 0);
+                const attrKeys = new Set([...attrSet.flatMap(_attr => Object.keys(_attr))]);
+
+                const attributes = [...attrKeys].reduce((obj:any, key) => {
+                  const vals = attrSet.flatMap(_attr => _attr[key]);
+                  obj[key] = vals;
+                  return obj;
+                }, {});
+                _item.tag.attr = attributes;
+                return true;
+              }
+
+            });
             if (!found) {
               result[prop] = item.toString();
             }

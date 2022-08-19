@@ -16,6 +16,7 @@ export class Tag {
       const tag = _data.split(Utility.vcardSplitRex)[0];
       const attrs = tag.split(';');
 
+      // attrs.shift()! - means the variable is non=null/non-undefined
       this._prop = attrs.shift()!;
       const frags = this._prop.split('.');
       if (frags.length > 1) {

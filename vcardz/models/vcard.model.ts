@@ -36,15 +36,21 @@ export class vCard implements ICard {
       if (!this[key]) {
         return;
       }
-      Array.from(this[key] as Set<Atom|Bag>)
-           .forEach(x => {
-             if (x.tag.group) {
-               groups.set(x.tag.group, groups.get(x.tag.group) || [] as string[]);
-               groups.get(x.tag.group)!.push(x.toString());
-             } else {
-               data.push(x.toString());
-             }
-           });
+
+      if (this[key] instanceof Array) {
+        this[key].forEach((x: Atom|Bag) => {
+          if (x.tag.group) {
+            groups.set(x.tag.group, groups.get(x.tag.group) || [] as string[]);
+            groups.get(x.tag.group)!.push(x.toString());
+          } else {
+            data.push(x.toString());
+          }
+        });
+
+      } else {
+        data.push(this[key].toString());
+      }
+
     };
 
     writeProp('FN');
