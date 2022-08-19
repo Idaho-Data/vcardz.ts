@@ -1,17 +1,23 @@
 import {
   Atom,
   Bag,
-  ICard,
   vCard,
 } from '../models';
 import { Utility } from '../io/utility';
-import { async } from 'rxjs/internal/scheduler/async';
 import { vCardReader } from '../io';
 import * as assert from 'assert';
+import { JaroWinkler } from 'string-metric';
+import { Categories } from '../models/properties/categories.model';
+import {
+  VCARD_CATEGORIES,
+  VCARD_FN,
+} from '../models/properties';
 
 
 export class vCardEngine {
   protected _inCard: boolean = false;
+  protected static JAROWINKLER_MATCH = 0.95;
+
 
   public constructor(protected _payload: string) {}
 
@@ -141,7 +147,8 @@ export class vCardEngine {
   public vcardMatch(atom1: Atom, atom2: Atom): boolean {
     switch (atom1.tag.prop) {
       case 'FN':
-        return atom1.value === atom2.value;
+        const jaroWinkler = new JaroWinkler();
+        return jaroWinkler.similarity(atom1.value, atom2.value) > vCardEngine.JAROWINKLER_MATCH;
 
       default:
         return false;
@@ -166,8 +173,8 @@ export class vCardEngine {
                 return true;
               }
 
-              // values matched but tag is different
-              if (_item.valueHash === item.valueHash) {
+              // values matched but tag is different; ensure tags are in the same group
+              if ( _item.tag.group === item.tag.group && _item.valueHash === item.valueHash) {
                 // merge tag attribute maps
                 const attrSet = [_item.tag.attr, item.tag.attr].filter(_attr => _attr && Object.keys(_attr).length > 0);
                 const attrKeys = new Set([...attrSet.flatMap(_attr => Object.keys(_attr))]);
@@ -201,6 +208,61 @@ export class vCardEngine {
 
     copy(card1);
     copy(card2);
+
+    // perform merge cleanup
+    if (result[VCARD_FN]) {
+      // de-dupe formal names
+      // need to partition by tag to account for attributes
+      const fnBuckets = result[VCARD_FN].reduce((map: Map<string, string>, atom: Atom) => {
+        const tag = atom.tag.toString();
+        const oldName = map.has(tag) ? map.get(tag) as string
+                                     : '';
+        const name = atom.value;
+        // prefer longer names
+        const temp = (oldName.length > name.length) ? oldName : name;
+        map.set(tag, temp);
+        return map;
+      }, new Map<string, string>());
+
+      delete result[VCARD_FN];
+      [...fnBuckets.keys()].forEach((tag: string) => {
+        result[VCARD_FN] = `${tag}:${fnBuckets.get(tag)}`;
+      });
+    }
+
+
+    if (result[VCARD_CATEGORIES]) {
+      // de-dupe categories
+      // need to partition by tag to account for attributes
+      const categoryBuckets = result[VCARD_CATEGORIES].reduce((map: Map<string, Set<string>>, cat: Categories) => {
+        const tag = cat.tag.toString();
+        const tokens: Set<string> = (map.has(tag)) ? map.get(tag) as Set<string>
+                                                   : new Set<string>();
+        const uniqueTokens = new Set([...tokens,
+                                      ...cat.tokens]);
+        map.set(tag, uniqueTokens);
+        return map;
+      }, new Map<string, Set<string>>);
+
+      delete result[VCARD_CATEGORIES];
+      [...categoryBuckets.keys()].forEach((tag: string) => {
+        // case-insensitive sort categories
+        const cats = [...categoryBuckets.get(tag)].sort((a, b) => {
+                                                    const _a = a.toLowerCase();
+                                                    const _b = b.toLowerCase();
+                                                    if (_a < _b) {
+                                                      return -1;
+                                                    }
+                                                    if (_a > _b) {
+                                                      return 1;
+                                                    }
+                                                    return 0;
+                                                  })
+                                                  .join(',');
+        result[VCARD_CATEGORIES] = `${tag}:${cats}`;
+      });
+
+    }
 
     return result;
   }

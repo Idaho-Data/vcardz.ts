@@ -2,14 +2,8 @@ import {
   Item,
   Rss,
 } from '../models/rss';
-import {
-  getTraversalObj,
-  parse,
-} from 'fast-xml-parser';
-import {
-  deserialize,
-  plainToClass,
-} from 'class-transformer';
+import { XMLParser } from 'fast-xml-parser';
+import { plainToClass } from 'class-transformer';
 
 
 export class RssEngine {
@@ -28,9 +22,11 @@ export class RssEngine {
     const options = {
       attributeNamePrefix: '',
       ignoreAttributes: false,
-      stopNodes: ['description', 'media:description']
+      stopNodes: ['*.description', '*.media:description']
     };
-    const payloadObj = parse(this._payload, options);
+    const parser = new XMLParser(options);
+    // const payloadObj = parse(this._payload, options);
+    const payloadObj = parser.parse(this._payload);
     this._feed = plainToClass(Rss, payloadObj.rss);
   }
 

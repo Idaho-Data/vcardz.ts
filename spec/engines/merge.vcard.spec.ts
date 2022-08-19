@@ -1,11 +1,8 @@
-import { vCardEngine } from '../../vcardz';
-import { TestData } from '../data/testdata';
 import {
-  Atom,
   vCard,
+  vCardEngine,
 } from '../../vcardz';
-import { readFileSync } from 'fs';
-import { convertToJson } from 'fast-xml-parser';
+import { TestData } from '../data/testdata';
 import { VcardMergeData } from '../data/vcard-merge-data';
 
 

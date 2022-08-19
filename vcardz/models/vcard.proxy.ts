@@ -4,8 +4,10 @@ import { Atom } from './atom.model';
 import { Bag } from './bag.model';
 import {
   Address,
+  Categories,
   Name,
   Phone,
+  VCARD_CATEGORIES,
 } from './properties';
 
 
@@ -26,6 +28,10 @@ export class vCardProxy {
     switch (prop) {
       case 'ADR':
         cardProp.add(new Address(stringVal));
+        break;
+
+      case VCARD_CATEGORIES:
+        cardProp.add(new Categories(stringVal));
         break;
 
       case 'N':
@@ -107,9 +113,18 @@ export class vCardProxy {
   }
 
 
+  protected static deleteProperty(card: ICard, prop: string) {
+    if (prop in card) {
+      return delete card[prop];
+    }
+    return true;
+  }
+
+
   // proxy handler
   public static get handler(): object {
     return {
+      deleteProperty: this.deleteProperty,
       has: this.has,
       ownKeys: this.ownKeys,
       set: this.setter,

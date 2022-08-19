@@ -1,11 +1,10 @@
-import { vCardEngine } from '../../vcardz';
-import { TestData } from '../data/testdata';
 import {
   Atom,
   vCard,
+  vCardEngine,
 } from '../../vcardz';
+import { TestData } from '../data/testdata';
 import { readFileSync } from 'fs';
-import { convertToJson } from 'fast-xml-parser';
 
 
 describe('vCardEngine', () => {
@@ -32,8 +31,7 @@ describe('vCardEngine', () => {
     const scrubbed = engine.fscrub(engine.vcardFeatures,
                                    engine.vcardMatch,
                                    engine.vcardMerge);
-    scrubbed[2].toString();
-    expect(0).toEqual(1);
+    expect(2).toEqual(scrubbed.length);
   });
 
 });
