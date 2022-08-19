@@ -152,23 +152,29 @@ export class vCardEngine {
   public vcardMerge(card1: vCard, card2: vCard): vCard {
     const result = vCard.create();
 
-    // const check = (prop: string, item: string|Atom|Bag|ICard) => {
-    //   if (result[prop] instanceof Array) {
-    //
-    //
-    //   } else {
-    //
-    //   }
-    // };
-
     const copy = (src: vCard) => {
       for (let prop in src) {
         if (src[prop] instanceof Array) {
           [...src[prop]].forEach(item => {
-            result[prop] = item
+            if (!result[prop]) {
+              result[prop] = item.toString();
+              return;
+            }
+
+            let found = [...result[prop]].find(_item => _item.hash === item.hash);
+            if (!found) {
+              result[prop] = item.toString();
+            }
           });
+
         } else {
-          result[prop] = src[prop];
+          if (!result[prop]) {
+            result[prop] = src[prop].toString();
+          }
+
+          if (result[prop].hash !== src[prop].hash) {
+            result[prop] = src[prop].toString();
+          }
         }
       }
     };
