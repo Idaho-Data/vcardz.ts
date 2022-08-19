@@ -113,7 +113,7 @@ export class vCardEngine {
         zombie = undefined;
       } else {
         const merged = mergeCallback(buddy, zombie as vCard);
-        scrubbed.splice(scrubbed.indexOf(buddy, 1));
+        scrubbed.splice(scrubbed.indexOf(buddy), 1);
 
         const mergedFeatures = featuresCallback(merged);
         mergedFeatures.forEach(atom => p_hash.set(atom.toString(), merged));
@@ -148,7 +148,11 @@ export class vCardEngine {
     switch (atom1.tag.prop) {
       case 'FN':
         const jaroWinkler = new JaroWinkler();
-        return jaroWinkler.similarity(atom1.value, atom2.value) > vCardEngine.JAROWINKLER_MATCH;
+        const score = jaroWinkler.similarity(atom1.value, atom2.value);
+        if (score >= vCardEngine.JAROWINKLER_MATCH) {
+          console.log(`${atom1.value} / ${atom2.value} => ${score}`);
+        }
+        return score >= vCardEngine.JAROWINKLER_MATCH;
 
       default:
         return false;
