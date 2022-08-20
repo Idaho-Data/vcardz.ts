@@ -2,6 +2,9 @@ import {
   Atom,
   vCard,
 } from '../../vcardz/models';
+import { vCardEngine } from '../../vcardz';
+import { TestData } from '../data/testdata';
+import assert = require('assert');
 
 
 describe('vCard', () => {
@@ -46,6 +49,39 @@ describe('vCard', () => {
     let card = vCard.create();
     card.TITLE = atom1;
     expect(card.toString()).toEqual(`BEGIN:VCARD\nVERSION:4.0\n${atom1}\nEND:VCARD`);
+  });
+
+
+  it('vCard toString test', () => {
+    const engine = new vCardEngine(TestData.johnDoe1);
+    const card = engine.run().next().value;
+    const text = card.toString();
+    expect(TestData.johnDoe1_string).toEqual(text);
+  });
+
+
+  it('vCard toString test 2', () => {
+    const engine = new vCardEngine(TestData.johnDoe1);
+    const card = engine.run().next().value;
+    const text = card.toString();
+    expect(text).toContain('www.example.com/Joe/foaf.df');
+  });
+
+
+  it('vCard JSON test', () => {
+    const engine = new vCardEngine(TestData.johnDoe1);
+    const card = engine.run().next().value as vCard;
+    const json = card.toJson();
+    const obj = JSON.parse(json);
+    expect(obj['FN'].length).toEqual(2);
+  });
+
+
+  it('vCard fromJson test', () => {
+    const card = vCard.fromJson(TestData.johnDoe1_json);
+    expect(card).toBeDefined();
+    assert(card !== undefined);
+    expect(card['N']).toBeDefined();
   });
 
 });

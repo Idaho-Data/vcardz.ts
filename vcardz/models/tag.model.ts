@@ -1,5 +1,6 @@
 import { Utility } from '../io/utility';
 import { IAttributes } from './attributes.interface';
+import assert = require('assert');
 const MurmurHash3 = require('imurmurhash');
 
 
@@ -140,12 +141,34 @@ export class Tag {
   }
 
 
-  public toJSON() {
-    return {
-      prop: this._prop,
-      group: this._group,
-      attr: this.attr
-    };
+  // public toJSON() {
+  //   return {
+  //     prop: this._prop,
+  //     group: this._group,
+  //     attr: this.attr
+  //   };
+  // }
+
+
+  public static fromObject(obj: any): Tag {
+    assert(obj !== undefined);
+
+    if (!obj.hasOwnProperty('prop')) {
+      throw new ReferenceError('missing "prop" field');
+    }
+
+    const tag = new Tag('');
+    tag.prop = obj.prop;
+
+    if (obj.hasOwnProperty('group')) {
+      tag.group = obj.group;
+    }
+
+    if (obj.hasOwnProperty('attr')) {
+      tag.attr = obj.attr;
+    }
+
+    return tag;
   }
 
 }

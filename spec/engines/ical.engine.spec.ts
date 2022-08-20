@@ -60,8 +60,8 @@ describe('iCalEngine', () => {
         ' vote and took over supervision of the special counsel investigation as it' +
         ' approached its conclusion.*\\n\\n* Helderman, Rosalind S. and Zapotosky,' +
         ' Matt. The Mueller Report: The Washington Post. Scribner, 2019, p49';
-      expect(testValue).toEqual(events[0].DESCRIPTION.value);
-      expect('TRANSPARENT').toEqual(events[0].TRANSP.value);
+      expect(testValue).toEqual(events[0].DESCRIPTION[0].value);
+      expect('TRANSPARENT').toEqual(events[0].TRANSP[0].value);
       curr = iter.next();
     }
   });

@@ -22,17 +22,17 @@ export class Address extends Bag {
   }
 
 
-  public toJSON() {
-    return Object.assign(super.toJSON(),
-                         {
-                           poBox: this.poBox,
-                           extended: this.extended,
-                           street: this.street,
-                           city: this.city,
-                           region: this.region,
-                           postalCode: this.postalCode,
-                           country: this.country
-                         });
-  }
+  // public toJSON() {
+  //   return Object.assign(super.toJSON(),
+  //                        {
+  //                          poBox: this.poBox,
+  //                          extended: this.extended,
+  //                          street: this.street,
+  //                          city: this.city,
+  //                          region: this.region,
+  //                          postalCode: this.postalCode,
+  //                          country: this.country
+  //                        });
+  // }
 
 }

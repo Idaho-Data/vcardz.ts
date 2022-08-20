@@ -144,15 +144,31 @@ export class vCardEngine {
   }
 
 
-  public vcardMatch(atom1: Atom, atom2: Atom): boolean {
-    switch (atom1.tag.prop) {
+  public vcardMatch(item1: Atom|Bag, item2: Atom|Bag): boolean {
+    const jaroWinkler = new JaroWinkler();
+    let score = 0;
+
+    switch (item1.tag.prop) {
       case 'FN':
-        const jaroWinkler = new JaroWinkler();
-        const score = jaroWinkler.similarity(atom1.value, atom2.value);
-        if (score >= vCardEngine.JAROWINKLER_MATCH) {
-          console.log(`${atom1.value} / ${atom2.value} => ${score}`);
-        }
+        score = jaroWinkler.similarity(item1.value, item2.value);
+        // if (score >= vCardEngine.JAROWINKLER_MATCH) {
+        //   console.log(`FN ${item1.value} / ${item2.value} => ${score}`);
+        // }
         return score >= vCardEngine.JAROWINKLER_MATCH;
+
+      case 'N':
+        score = jaroWinkler.similarity(item1.toString(), item2.toString());
+        // if (score >= vCardEngine.JAROWINKLER_MATCH) {
+        //   console.log(`N ${item1.toString()} / ${item2.toString()} => ${score}`);
+        // }
+        return score >= vCardEngine.JAROWINKLER_MATCH;
+
+      case 'EMAIL':
+      case 'TEL':
+        // if (item1.valueHash === item2.valueHash) {
+        //   console.log(`${item1.tag.prop} ${item1.value} / ${item2.value}`);
+        // }
+        return item1.valueHash === item2.valueHash;
 
       default:
         return false;
