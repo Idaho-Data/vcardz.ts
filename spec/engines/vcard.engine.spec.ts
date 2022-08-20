@@ -34,16 +34,17 @@ describe('vCardEngine', () => {
   });
 
 
-  it('vCard fscrub test 2', () => {
-    const payload = readFileSync('./spec/data/jwatts-contacts.vcf', 'utf-8');
-    const count = [...(new vCardEngine(payload)).run()].length;
-    console.log(`count => ${count}`);
-
-    const engine = new vCardEngine(payload);
-    const scrubbed = engine.fscrub(engine.vcardFeatures.bind(engine),
-                                   engine.vcardMatch.bind(engine),
-                                   engine.vcardMerge.bind(engine));
-    expect(2).toEqual(scrubbed.length);
-  });
+  // fit('vCard fscrub test 2', () => {
+  //   const payload = readFileSync('./spec/data/jwatts-contacts.vcf', 'utf-8');
+  //   // const count = [...(new vCardEngine(payload)).run()].length;
+  //   // console.log(`count => ${count}`);
+  //
+  //   const engine = new vCardEngine(payload);
+  //   const scrubbed = engine.fscrub(engine.vcardFeatures.bind(engine),
+  //                                  engine.vcardMatch.bind(engine),
+  //                                  engine.vcardMerge.bind(engine));
+  //   console.log(`\n${scrubbed[87]}`);
+  //   expect(453).toEqual(scrubbed.length);
+  // });
 
 });
