@@ -24,8 +24,8 @@ describe('vCard', () => {
   it('Name test', () => {
     let card = vCard.create();
     card['N'] = 'N:Doe;John;;;';
-    expect(card['N'].last).toEqual('Doe');
-    expect(card['N'].first).toEqual('John');
+    expect(card['N'][0].last).toEqual('Doe');
+    expect(card['N'][0].first).toEqual('John');
   });
 
   it('group test', () => {

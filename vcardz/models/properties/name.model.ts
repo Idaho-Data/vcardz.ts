@@ -17,15 +17,16 @@ export class Name extends Bag {
     this.suffix = this._tokens[4];
   }
 
-  // public toJSON(): object {
-  //   return Object.assign(super.toJSON(),
-  //                        {
-  //                          last: this.last,
-  //                          first: this.first,
-  //                          middle: this.middle,
-  //                          prefix: this.prefix,
-  //                          suffix: this.suffix
-  //                        });
-  // }
+
+  public override toJSON(): object {
+    return Object.assign(super.toJSON(),
+                         {
+                           last: this.last,
+                           first: this.first,
+                           middle: this.middle,
+                           prefix: this.prefix,
+                           suffix: this.suffix
+                         });
+  }
 
 }

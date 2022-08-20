@@ -1,9 +1,13 @@
-# vCardz.ts
-An npm module for parsing vCard and iCal that doesn't make your head hurt.
+# vCardz
+A vCard / iCal module that doesn't make your head hurt.
 
 ## Installation
 ```sh
-npm install vcardz.ts --save
+npm install vcardz --save
+```
+
+```shell
+yarn add vcardz
 ```
 
 ## Usage

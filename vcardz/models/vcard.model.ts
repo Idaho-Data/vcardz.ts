@@ -38,25 +38,18 @@ export class vCard implements ICard {
   public toString(): string {
     let data = [] as string[];
     let groups = new Map<string, string[]>();
-
-    const setProp = (x: Atom|Bag) => {
-      if (x.tag.group) {
-        groups.set(x.tag.group, groups.get(x.tag.group) || [] as string[]);
-        groups.get(x.tag.group)!.push(x.toString());
-      } else {
-        data.push(x.toString());
-      }
-    }
-
     const writeProp = (key: string) => {
       if (!this[key]) {
         return;
       }
-      if (this[key] instanceof Array) {
-        this[key].forEach(setProp);
-      } else {
-        setProp(this[key]);
-      }
+      this[key].forEach((x: Atom|Bag) => {
+                          if (x.tag.group) {
+                            groups.set(x.tag.group, groups.get(x.tag.group) || [] as string[]);
+                            groups.get(x.tag.group)!.push(x.toString());
+                          } else {
+                            data.push(x.toString());
+                          }
+                        });
     };
 
     writeProp('FN');
@@ -71,9 +64,7 @@ export class vCard implements ICard {
                 'VERSION:4.0'];
     card = [...card, ...data];
     Array.from(groups.values())
-         .forEach(array => {
-           card = [...card, ...array];
-         });
+         .forEach(array => card = [...card, ...array]);
     card.push('END:VCARD');
     return card.join('\n');
   }
@@ -96,18 +87,10 @@ export class vCard implements ICard {
       };
 
       obj[VCARD_FN].forEach(pushField);
-      pushField(obj[VCARD_N]);
-
+      obj[VCARD_N].forEach(pushField);
       Object.keys(obj)
-            .filter(key => ![VCARD_FN, VCARD_N].includes(key))
-            .filter(key => !(obj[key] instanceof Array))
-            .forEach(key => pushField(obj[key]));
-
-      Object.keys(obj)
-            .filter(key => ![VCARD_FN, VCARD_N].includes(key))
-            .filter(key => obj[key] instanceof Array)
+            .filter(key => !(/^FN$|^N$/.test(key)))
             .forEach(key => obj[key].forEach(pushField));
-
       return vCardReader.fromString(buffer);
 
     } catch (ex) {

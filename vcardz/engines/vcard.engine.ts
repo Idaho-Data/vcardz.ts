@@ -188,48 +188,40 @@ export class vCardEngine {
   // merge helper functions
   protected mergeCopy(target: vCard, src: vCard): vCard {
     for (let prop in src) {
-      if (src[prop] instanceof Array) {
-        [...src[prop]].forEach(item => {
-          if (!target[prop]) {
-            target[prop] = item.toString();
-            return;
-          }
-
-          let found = [...target[prop]].find(_item => {
-            if (_item.hash === item.hash) {
-              return true;
-            }
-
-            // values matched but tag is different; ensure tags are in the same group
-            if ( _item.tag.group === item.tag.group && _item.valueHash === item.valueHash) {
-              // merge tag attribute maps
-              const attrSet = [_item.tag.attr, item.tag.attr].filter(_attr => _attr && Object.keys(_attr).length > 0);
-              const attrKeys = new Set([...attrSet.flatMap(_attr => Object.keys(_attr))]);
-
-              const attributes = [...attrKeys].reduce((obj:any, key) => {
-                const vals = attrSet.flatMap(_attr => _attr[key]);
-                obj[key] = vals;
-                return obj;
-              }, {});
-              _item.tag.attr = attributes;
-              return true;
-            }
-
-          });
-          if (!found) {
-            target[prop] = item.toString();
-          }
-        });
-
-      } else {
+      [...src[prop]].forEach(item => {
         if (!target[prop]) {
-          target[prop] = src[prop].toString();
+          target[prop] = item.toString();
+          return;
         }
 
-        if (target[prop].hash !== src[prop].hash) {
-          target[prop] = src[prop].toString();
+        let found = [...target[prop]].find(_item => {
+          // yay! we found a match
+          if (_item.hash === item.hash) {
+            return true;
+          }
+
+          // values matched but tag is different; ensure tags are in the same group
+          if (_item.tag.group === item.tag.group && _item.valueHash === item.valueHash) {
+            // merge tag attribute maps
+            const attrSet = [_item.tag.attr,
+                             item.tag.attr].filter(_attr => _attr && Object.keys(_attr).length > 0);
+            const attrKeys = new Set([...attrSet.flatMap(_attr => Object.keys(_attr))]);
+
+            const attributes = [...attrKeys].reduce((obj: any, key) => {
+              const vals = attrSet.flatMap(_attr => _attr[key]);
+              obj[key] = vals;
+              return obj;
+            }, {});
+            _item.tag.attr = attributes;
+            return true;
+          }
+
+        });
+        if (!found) {
+          target[prop] = item.toString();
         }
-      }
+      });
+
     } // end for
 
     return target;

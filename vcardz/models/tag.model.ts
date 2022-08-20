@@ -141,13 +141,13 @@ export class Tag {
   }
 
 
-  // public toJSON() {
-  //   return {
-  //     prop: this._prop,
-  //     group: this._group,
-  //     attr: this.attr
-  //   };
-  // }
+  public toJSON(): object {
+    return {
+      prop: this._prop,
+      group: this._group,
+      attr: this.attr
+    };
+  }
 
 
   public static fromObject(obj: any): Tag {

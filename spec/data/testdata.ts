@@ -1,7 +1,7 @@
 export class TestData {
 
-  public static johnDoe1 = `
-BEGIN:VCARD
+  public static johnDoe1 =
+`BEGIN:VCARD
 VERSION:3.0
 N:Doe;John;;;
 FN;type=display:John Doe
@@ -56,28 +56,30 @@ item5.X-ABLABEL:_$!<Friend>!$_
 item5.X-ABRELATEDNAMES;TYPE=pref:Jane Doe
 END:VCARD`;
 
-  public static johnDoe1_json = `
-{
-  "N": {
-    "tag": {
-      "prop": "N",
-      "group": "",
-      "attr": {}
-    },
-    "value": "Doe;John;;;",
-    "tokens": [
-      "Doe",
-      "John",
-      "",
-      "",
-      ""
-    ],
-    "last": "Doe",
-    "first": "John",
-    "middle": "",
-    "prefix": "",
-    "suffix": ""
-  },
+  public static johnDoe1_json =
+`{
+  "N": [
+    {
+      "tag": {
+        "prop": "N",
+        "group": "",
+        "attr": {}
+      },
+      "value": "Doe;John;;;",
+      "tokens": [
+        "Doe",
+        "John",
+        "",
+        "",
+        ""
+      ],
+      "last": "Doe",
+      "first": "John",
+      "middle": "",
+      "prefix": "",
+      "suffix": ""
+    }
+  ],
   "FN": [
     {
       "value": "John Doe",
@@ -195,6 +197,30 @@ END:VCARD`;
       }
     }
   ],
+  "CATEGORIES": [
+    {
+      "tag": {
+        "prop": "CATEGORIES",
+        "group": "",
+        "attr": {}
+      },
+      "value": "Test group,Work",
+      "tokens": [
+        "Test group",
+        "Work"
+      ]
+    }
+  ],
+  "X-ABUID": [
+    {
+      "value": "5AD380FD-B2DE-4261-BA99-DE1D1DB52FBE\\\\:ABPerson",
+      "tag": {
+        "prop": "X-ABUID",
+        "group": "",
+        "attr": {}
+      }
+    }
+  ],
   "ADR": [
     {
       "tag": {
@@ -282,18 +308,28 @@ END:VCARD`;
       }
     }
   ],
-  "URL": {
-    "value": "http://www.example.com/doe",
-    "tag": {
-      "prop": "URL",
-      "group": "item3",
-      "attr": {
-        "TYPE": [
-          "pref"
-        ]
+  "URL": [
+    {
+      "value": "http://www.example.com/doe",
+      "tag": {
+        "prop": "URL",
+        "group": "item3",
+        "attr": {
+          "TYPE": [
+            "pref"
+          ]
+        }
+      }
+    },
+    {
+      "value": "http://www.example.com/Joe/foaf.df",
+      "tag": {
+        "prop": "URL",
+        "group": "item4",
+        "attr": {}
       }
     }
-  },
+  ],
   "X-ABLABEL": [
     {
       "value": "_$!<HomePage>!$_",
@@ -333,37 +369,12 @@ END:VCARD`;
         }
       }
     }
-  ],
-  "CATEGORIES": [
-    {
-      "tag": {
-        "prop": "CATEGORIES",
-        "group": "",
-        "attr": {}
-      },
-      "value": "Work,Test group",
-      "tokens": [
-        "Work",
-        "Test group"
-      ]
-    }
-  ],
-  "X-ABUID": [
-    {
-      "value": "5AD380FD-B2DE-4261-BA99-DE1D1DB52FBE:ABPerson",
-      "tag": {
-        "prop": "X-ABUID",
-        "group": "",
-        "attr": {}
-      }
-    }
   ]
-}  
-  `;
+}`;
 
 
-  public static event1 = `
-BEGIN:VCALENDAR
+  public static event1 =
+`BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//ZContent.net//Zap Calendar 1.0//EN
 CALSCALE:GREGORIAN
