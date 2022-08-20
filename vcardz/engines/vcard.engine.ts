@@ -9,6 +9,7 @@ import * as assert from 'assert';
 import { JaroWinkler } from 'string-metric';
 import { Categories } from '../models/properties/categories.model';
 import {
+  Name,
   VCARD_CATEGORIES,
   VCARD_FN,
 } from '../models/properties';
@@ -151,23 +152,29 @@ export class vCardEngine {
     switch (item1.tag.prop) {
       case 'FN':
         score = jaroWinkler.similarity(item1.value, item2.value);
-        // if (score >= vCardEngine.JAROWINKLER_MATCH) {
-        //   console.log(`FN ${item1.value} / ${item2.value} => ${score}`);
-        // }
+        if (score >= vCardEngine.JAROWINKLER_MATCH) {
+          console.log(`FN ${item1.value} / ${item2.value} => ${score}`);
+        }
         return score >= vCardEngine.JAROWINKLER_MATCH;
 
       case 'N':
-        score = jaroWinkler.similarity(item1.toString(), item2.toString());
-        // if (score >= vCardEngine.JAROWINKLER_MATCH) {
-        //   console.log(`N ${item1.toString()} / ${item2.toString()} => ${score}`);
-        // }
+        const name1 = item1 as Name;
+        const name2 = item2 as Name;
+        if (!name1.fullName || !name2.fullName) {
+          return false;
+        }
+
+        score = jaroWinkler.similarity(name1.fullName, name2.fullName);
+        if (score >= vCardEngine.JAROWINKLER_MATCH) {
+          console.log(`N ${name1.fullName} / ${name2.fullName} => ${score}`);
+        }
         return score >= vCardEngine.JAROWINKLER_MATCH;
 
       case 'EMAIL':
       case 'TEL':
-        // if (item1.valueHash === item2.valueHash) {
-        //   console.log(`${item1.tag.prop} ${item1.value} / ${item2.value}`);
-        // }
+        if (item1.valueHash === item2.valueHash) {
+          console.log(`${item1.tag.prop} ${item1.value} / ${item2.value}`);
+        }
         return item1.valueHash === item2.valueHash;
 
       default:

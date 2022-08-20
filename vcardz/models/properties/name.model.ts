@@ -28,7 +28,13 @@ export class Name extends Bag {
     this._tokens = data.split(';');
   }
 
-
+  get fullName(): string {
+    return [this._last,
+            this._first,
+            this._middle,
+            this._prefix,
+            this._suffix].join(' ').trim();
+  }
 
   get last(): string {
     return this._last;

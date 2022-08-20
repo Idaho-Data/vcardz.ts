@@ -106,7 +106,7 @@ describe('vCard', () => {
     const name = new Name('');
     name.first = 'John';
     name.last = 'Doe';
-    expect(name.toString()).toEqual('Doe;John;;;');
+    expect(name.toString()).toEqual(':Doe;John;;;');
 
     card['N'] = name;
     const text = card.toString();
