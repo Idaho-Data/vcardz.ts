@@ -20,7 +20,18 @@ export class vCardProxy {
     const cardProp = card[prop] as Set<Atom|Bag|ICard>;
 
     if (typeof value !== 'string') {
-      cardProp.add(value as Atom|Bag|ICard);
+      // handle for ICard values
+      if ('create' in value) {
+        cardProp.add(value as ICard);
+        return true;
+      }
+
+      const item = value as Atom|Bag;
+      // check for empty tag values
+      if ([null, undefined, ''].indexOf(item.tag.prop) !== -1) {
+        item.tag.prop = prop;
+      }
+      cardProp.add(item);
       return true;
     }
 

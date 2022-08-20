@@ -5,6 +5,8 @@ import {
 import { vCardEngine } from '../../vcardz';
 import { TestData } from '../data/testdata';
 import assert = require('assert');
+import exp = require('constants');
+import { Name } from '../../vcardz/models/properties';
 
 
 describe('vCard', () => {
@@ -82,6 +84,33 @@ describe('vCard', () => {
     expect(card).toBeDefined();
     assert(card !== undefined);
     expect(card['N']).toBeDefined();
+  });
+
+
+  it ('vCard building w/ atom', () => {
+    const card = vCard.create();
+    const atom = new Atom('');
+    atom.tag.prop = 'FN';
+    expect(atom.tag.hash).toBeGreaterThan(0);
+    atom.value = 'John Doe';
+    card['FN'] = atom;
+    expect(atom.hash).toBeGreaterThan(0);
+
+    const text = card.toString();
+    expect(text).toContain('John Doe');
+  });
+
+
+  it ('vCard building w/ name', () => {
+    const card = vCard.create();
+    const name = new Name('');
+    name.first = 'John';
+    name.last = 'Doe';
+    expect(name.toString()).toEqual('Doe;John;;;');
+
+    card['N'] = name;
+    const text = card.toString();
+    expect(text).toContain('N:Doe;John;;;\n');
   });
 
 });

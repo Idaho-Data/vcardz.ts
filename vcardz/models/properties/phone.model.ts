@@ -18,9 +18,6 @@ export class Phone extends Atom {
       this._value = temp;
     }
 
-    // reset hashes
-    this._hash = MurmurHash3(this.toString()).result();
-    this._valueHash = MurmurHash3(this._value).result();
   }
 
 }

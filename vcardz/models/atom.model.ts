@@ -6,22 +6,18 @@ const MurmurHash3 = require('imurmurhash');
 export class Atom {
   protected _tag: Tag;
   protected _value: string;
-  protected _hash: number;
-  protected _valueHash: number;
 
   public constructor(data: string) {
     this._value = Utility.vcardValue(data);
     this._tag = new Tag(data);
-    this._hash = MurmurHash3(this.toString()).result();
-    this._valueHash = MurmurHash3(this._value).result();
   }
 
   public get hash(): number {
-    return this._hash;
+    return MurmurHash3(this.toString()).result()
   }
 
   public get valueHash(): number {
-    return this._valueHash;
+    return MurmurHash3(this._value).result();
   }
 
   public get tag(): Tag {

@@ -8,7 +8,6 @@ export class Tag {
   protected _group: string = '';
   protected _prop: string = '';
   protected _attr: Map<string, Set<string>> = new Map<string, Set<string>>();
-  protected _hash = 0;
 
   public constructor(_data: string) {
     try {
@@ -35,8 +34,6 @@ export class Tag {
         this.setAttr(type, val.split(','));
       });
 
-      this._hash = MurmurHash3(this.toString()).result();
-
     } catch (ex) {
       this._prop = '';
       this._attr = new Map();
@@ -61,7 +58,7 @@ export class Tag {
   //
   // hash
   public get hash(): number {
-    return this._hash;
+    return MurmurHash3(this.toString()).result();
   }
 
   // group
