@@ -36,6 +36,7 @@ yarn add vcardz
 ```
 
 ## Quick Reference
+Full reference available at [https://idaho-data.github.io/vcardz.ts/](https://idaho-data.github.io/vcardz.ts/)
 
 Here's our `johnDoe` example vCard.
 ```typescript
