@@ -1,0 +1,175 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>vcardz</title><meta name="description" content="Documentation for vcardz"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
+<div class="tsd-toolbar-contents container">
+<div class="table-cell" id="tsd-search" data-base=".">
+<div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M15.7824 13.833L12.6666 10.7177C12.5259 10.5771 12.3353 10.499 12.1353 10.499H11.6259C12.4884 9.39596 13.001 8.00859 13.001 6.49937C13.001 2.90909 10.0914 0 6.50048 0C2.90959 0 0 2.90909 0 6.49937C0 10.0896 2.90959 12.9987 6.50048 12.9987C8.00996 12.9987 9.39756 12.4863 10.5008 11.6239V12.1332C10.5008 12.3332 10.5789 12.5238 10.7195 12.6644L13.8354 15.7797C14.1292 16.0734 14.6042 16.0734 14.8948 15.7797L15.7793 14.8954C16.0731 14.6017 16.0731 14.1267 15.7824 13.833ZM6.50048 10.499C4.29094 10.499 2.50018 8.71165 2.50018 6.49937C2.50018 4.29021 4.28781 2.49976 6.50048 2.49976C8.71001 2.49976 10.5008 4.28708 10.5008 6.49937C10.5008 8.70852 8.71314 10.499 6.50048 10.499Z" fill="var(--color-text)"></path></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div>
+<ul class="results">
+<li class="state loading">Preparing search index...</li>
+<li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">vcardz</a></div>
+<div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="7" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="11" width="14" height="2" fill="var(--color-text)"></rect></svg></a></div></div></header>
+<div class="container container-main">
+<div class="col-8 col-content">
+<div class="tsd-page-title">
+<h2>vcardz</h2></div>
+<div class="tsd-panel tsd-typography">
+<a href="#vcardz" id="vcardz" style="color: inherit; text-decoration: none;">
+  <h1>vCardz</h1>
+</a>
+<p>vCard processing that doesn&#39;t make your head hurt.</p>
+<pre><code class="language-typescript"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">vCardEngine</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;vcardz&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">payload</span><span class="hl-1"> = </span><span class="hl-3">`</span><br/><span class="hl-3">BEGIN:VCARD</span><br/><span class="hl-3">VERSION:4.0</span><br/><span class="hl-3">FN:Hello World</span><br/><span class="hl-3">END:VCARD</span><br/><span class="hl-3">`</span><span class="hl-1">;</span><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">engine</span><span class="hl-1"> = </span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-6">vCardEngine</span><span class="hl-1">(</span><span class="hl-2">vcard_data</span><span class="hl-1">);</span><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">deck</span><span class="hl-1"> = [...</span><span class="hl-2">engine</span><span class="hl-1">.</span><span class="hl-6">run</span><span class="hl-1">()];</span><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">card</span><span class="hl-1"> = </span><span class="hl-2">deck</span><span class="hl-1">[</span><span class="hl-7">0</span><span class="hl-1">];</span><br/><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">(</span><span class="hl-3">`</span><span class="hl-4">${</span><span class="hl-2">card</span><span class="hl-8">[</span><span class="hl-3">&#39;FN&#39;</span><span class="hl-8">][</span><span class="hl-7">0</span><span class="hl-8">].</span><span class="hl-2">value</span><span class="hl-4">}</span><span class="hl-3">`</span><span class="hl-1">);</span>
+</code></pre>
+<p><em>vCardz hello world</em></p>
+
+<a href="#features" id="features" style="color: inherit; text-decoration: none;">
+  <h2>Features</h2>
+</a>
+<ul>
+<li><a href="https://www.rfc-editor.org/rfc/rfc6350.html">RFC-6350</a> compliant.</li>
+<li>Parse vCards into typed <code>vCard</code> objects.</li>
+<li>Output vCards from <code>vCard</code> objects.</li>
+<li>Parse vCards into JSON.</li>
+<li>Build vCards from JSON.</li>
+<li>Modify or create vCards programmatically using a simple API.</li>
+<li>Fast vCard deduplication based on the <a href="http://infolab.stanford.edu/serf/swoosh_vldbj.pdf">Swoosh entity resolution algorithm</a>.</li>
+</ul>
+
+<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+  <h2>Installation</h2>
+</a>
+<pre><code class="language-sh"><span class="hl-1">npm install vcardz --save</span>
+</code></pre>
+<pre><code class="language-shell"><span class="hl-1">yarn add vcardz</span>
+</code></pre>
+
+<a href="#quick-reference" id="quick-reference" style="color: inherit; text-decoration: none;">
+  <h2>Quick Reference</h2>
+</a>
+<p>Here&#39;s our <code>johnDoe</code> example vCard.</p>
+<pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">JOHN_DOE_VCARD</span><span class="hl-1"> = </span><br/><span class="hl-3">`BEGIN:VCARD</span><br/><span class="hl-3">VERSION:3.0</span><br/><span class="hl-3">N:Doe;John;;;</span><br/><span class="hl-3">FN;type=display:John Doe</span><br/><span class="hl-3">FN;type=abbreviation:J Doe</span><br/><span class="hl-3">ORG:Example.com Inc.;</span><br/><span class="hl-3">TITLE:Imaginary test person</span><br/><span class="hl-3">EMAIL;type=INTERNET;type=WORK;type=pref:johnDoe@example.org</span><br/><span class="hl-3">TEL;type=WORK;type=pref:+1 617 555 1212</span><br/><span class="hl-3">TEL;type=WORK:+1 (617) 555-1234</span><br/><span class="hl-3">TEL;type=CELL:+1 781 555 1212</span><br/><span class="hl-3">TEL;type=HOME:+1 202 555 1212</span><br/><span class="hl-3">CATEGORIES:Test group,Work</span><br/><span class="hl-3">X-ABUID:5AD380FD-B2DE-4261-BA99-DE1D1DB52FBE</span><span class="hl-9">\\\\</span><span class="hl-3">:ABPerson</span><br/><span class="hl-3">item1.ADR;type=WORK:;;2 Enterprise Avenue;Worktown;NY;01111;USA</span><br/><span class="hl-3">item1.X-ABADR:us</span><br/><span class="hl-3">item2.ADR;type=HOME;type=pref:;;3 Acacia Avenue;Hoemtown;MA;02222;USA</span><br/><span class="hl-3">item2.X-ABADR:us</span><br/><span class="hl-3">NOTE:John Doe has a long and varied history</span><span class="hl-9">\\</span><span class="hl-3">, being documented on more police files that anyone else. Reports of his death are alas numerous.</span><br/><span class="hl-3">item3.URL;type=pref:http</span><span class="hl-9">\\</span><span class="hl-3">://www.example.com/doe</span><br/><span class="hl-3">item3.X-ABLabel:_$!&lt;HomePage&gt;!$_</span><br/><span class="hl-3">item4.URL:http</span><span class="hl-9">\\</span><span class="hl-3">://www.example.com/Joe/foaf.df</span><br/><span class="hl-3">item4.X-ABLabel:FOAF</span><br/><span class="hl-3">item5.X-ABRELATEDNAMES;type=pref:Jane Doe</span><br/><span class="hl-3">item5.X-ABLabel:_$!&lt;Friend&gt;!$_</span><br/><span class="hl-3">END:VCARD`</span><span class="hl-1">;</span>
+</code></pre>
+
+<a href="#reading" id="reading" style="color: inherit; text-decoration: none;">
+  <h3>Reading</h3>
+</a>
+<p>Read a single vCard:</p>
+<pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">engine</span><span class="hl-1"> = </span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-6">vCardEngine</span><span class="hl-1">(</span><span class="hl-5">JOHN_DOE_VCARD</span><span class="hl-1">);</span><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">card</span><span class="hl-1"> = </span><span class="hl-2">engine</span><span class="hl-1">.</span><span class="hl-6">run</span><span class="hl-1">().</span><span class="hl-6">next</span><span class="hl-1">().</span><span class="hl-2">value</span><span class="hl-1">;</span>
+</code></pre>
+<p>Quickly read multiple vCards into an array:</p>
+<pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">engine</span><span class="hl-1"> = </span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-6">vCardEngine</span><span class="hl-1">(</span><span class="hl-3">`</span><span class="hl-4">${</span><span class="hl-5">JOHN_DOE_VCARD</span><span class="hl-4">}</span><span class="hl-9">\n</span><span class="hl-4">${</span><span class="hl-5">JOHN_DOE_VCARD</span><span class="hl-4">}</span><span class="hl-3">`</span><span class="hl-1">);</span><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">cards</span><span class="hl-1"> = [...</span><span class="hl-2">engine</span><span class="hl-1">.</span><span class="hl-6">run</span><span class="hl-1">()];</span><br/><span class="hl-6">assert</span><span class="hl-1">(</span><span class="hl-2">cards</span><span class="hl-1">.</span><span class="hl-2">length</span><span class="hl-1"> === </span><span class="hl-7">2</span><span class="hl-1">);</span>
+</code></pre>
+<p>Read JSON data: <em>use output from <code>card.toJson()</code> as input</em></p>
+<pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">card</span><span class="hl-1"> = </span><span class="hl-2">vCard</span><span class="hl-1">.</span><span class="hl-6">fromJson</span><span class="hl-1">(...);</span>
+</code></pre>
+
+<a href="#writing" id="writing" style="color: inherit; text-decoration: none;">
+  <h3>Writing</h3>
+</a>
+<p>Write vCard data:</p>
+<pre><code class="language-typescript"><span class="hl-10">// both are equivalent</span><br/><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">(</span><span class="hl-2">card</span><span class="hl-1">.</span><span class="hl-6">toString</span><span class="hl-1">());</span><br/><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">(</span><span class="hl-3">`</span><span class="hl-4">${</span><span class="hl-2">card</span><span class="hl-4">}</span><span class="hl-3">`</span><span class="hl-1">);</span>
+</code></pre>
+<p>Write JSON data:</p>
+<pre><code class="language-typescript"><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">(</span><span class="hl-2">card</span><span class="hl-1">.</span><span class="hl-6">toJson</span><span class="hl-1">());</span>
+</code></pre>
+
+<a href="#fields" id="fields" style="color: inherit; text-decoration: none;">
+  <h3>Fields</h3>
+</a>
+<p>Access vCard fields using the same structure:</p>
+<pre><code class="language-typescript"><span class="hl-2">card</span><span class="hl-1">[</span><span class="hl-3">&#39;FN&#39;</span><span class="hl-1">][</span><span class="hl-7">0</span><span class="hl-1">].</span><span class="hl-2">value</span><span class="hl-1"> === </span><span class="hl-3">&#39;John Doe&#39;</span><br/><span class="hl-2">card</span><span class="hl-1">[</span><span class="hl-3">&#39;FN&#39;</span><span class="hl-1">][</span><span class="hl-7">1</span><span class="hl-1">].</span><span class="hl-2">value</span><span class="hl-1"> === </span><span class="hl-3">&#39;J Doe&#39;</span><br/><span class="hl-2">card</span><span class="hl-1">[</span><span class="hl-3">&#39;TITLE&#39;</span><span class="hl-1">][</span><span class="hl-7">0</span><span class="hl-1">].</span><span class="hl-2">value</span><span class="hl-1"> === </span><span class="hl-3">&#39;Imaginary test person&#39;</span><span class="hl-1">;</span>
+</code></pre>
+<p>note: <code>vCard</code> properties always return an <code>array</code></p>
+
+<a href="#adr-field" id="adr-field" style="color: inherit; text-decoration: none;">
+  <h4><code>ADR</code> field</h4>
+</a>
+<p>vCard&#39;s <code>ADR</code> field stores address components; the <code>Address</code> object provides additional helper properties:</p>
+<pre><code class="language-typescript"><span class="hl-2">card</span><span class="hl-1">[</span><span class="hl-3">&#39;ADR&#39;</span><span class="hl-1">][</span><span class="hl-7">0</span><span class="hl-1">].</span><span class="hl-2">street</span><span class="hl-1"> === </span><span class="hl-3">`2 Enterprise Avenue`</span><br/><span class="hl-2">card</span><span class="hl-1">[</span><span class="hl-3">&#39;ADR&#39;</span><span class="hl-1">][</span><span class="hl-7">0</span><span class="hl-1">].</span><span class="hl-2">city</span><span class="hl-1"> === </span><span class="hl-3">&#39;Worktown&#39;</span><br/><span class="hl-2">card</span><span class="hl-1">[</span><span class="hl-3">&#39;ADR&#39;</span><span class="hl-1">][</span><span class="hl-7">0</span><span class="hl-1">].</span><span class="hl-2">region</span><span class="hl-1"> === </span><span class="hl-3">&#39;NY&#39;</span><br/><span class="hl-2">card</span><span class="hl-1">[</span><span class="hl-3">&#39;ADR&#39;</span><span class="hl-1">][</span><span class="hl-7">0</span><span class="hl-1">].</span><span class="hl-2">postalCode</span><span class="hl-1"> === </span><span class="hl-3">&#39;011111&#39;</span><br/><span class="hl-2">card</span><span class="hl-1">[</span><span class="hl-3">&#39;ADR&#39;</span><span class="hl-1">][</span><span class="hl-7">0</span><span class="hl-1">].</span><span class="hl-2">country</span><span class="hl-1"> === </span><span class="hl-3">&#39;USA&#39;</span>
+</code></pre>
+
+<a href="#n-field" id="n-field" style="color: inherit; text-decoration: none;">
+  <h4><code>N</code> field</h4>
+</a>
+<p>vCard&#39;s <code>N</code> field stores name components; the <code>Name</code> object provides additional helper properties: </p>
+<pre><code class="language-typescript"><span class="hl-2">card</span><span class="hl-1">[</span><span class="hl-3">&#39;N&#39;</span><span class="hl-1">][</span><span class="hl-7">0</span><span class="hl-1">].</span><span class="hl-2">first</span><span class="hl-1"> === </span><span class="hl-3">&#39;John&#39;</span><br/><span class="hl-2">card</span><span class="hl-1">[</span><span class="hl-3">&#39;N&#39;</span><span class="hl-1">][</span><span class="hl-7">0</span><span class="hl-1">].</span><span class="hl-2">last</span><span class="hl-1"> === </span><span class="hl-3">&#39;Doe&#39;</span>
+</code></pre>
+
+<a href="#tel-field" id="tel-field" style="color: inherit; text-decoration: none;">
+  <h4><code>TEL</code> field</h4>
+</a>
+<p>the <code>Phone</code> object formats North American telephone numbers:</p>
+<pre><code class="language-typescript"><span class="hl-2">card</span><span class="hl-1">[</span><span class="hl-3">&#39;TEL&#39;</span><span class="hl-1">][</span><span class="hl-7">0</span><span class="hl-1">].</span><span class="hl-2">value</span><span class="hl-1"> === </span><span class="hl-3">&#39;617-555-1212&#39;</span>
+</code></pre>
+
+<a href="#tags" id="tags" style="color: inherit; text-decoration: none;">
+  <h3>Tags</h3>
+</a>
+<p>vCard tags, <em>e.g.</em> <code>FN;TYPE=display</code>, may contain attributes:</p>
+<pre><code class="language-typescript"><span class="hl-2">card</span><span class="hl-1">[</span><span class="hl-3">&#39;FN&#39;</span><span class="hl-1">][</span><span class="hl-7">0</span><span class="hl-1">].</span><span class="hl-2">tag</span><span class="hl-1">.</span><span class="hl-2">attr</span><span class="hl-1"> === [{</span><span class="hl-2">TYPE:</span><span class="hl-1"> [</span><span class="hl-3">&#39;display&#39;</span><span class="hl-1">]}]</span>
+</code></pre>
+<p>or a group, <em>e.g.</em> <code>item1.ADR;TYPE=WORK</code></p>
+<pre><code class="language-typescript"><span class="hl-2">card</span><span class="hl-1">[</span><span class="hl-3">&#39;ADR&#39;</span><span class="hl-1">][</span><span class="hl-7">0</span><span class="hl-1">].</span><span class="hl-2">tag</span><span class="hl-1">.</span><span class="hl-2">group</span><span class="hl-1"> === </span><span class="hl-3">&#39;item1&#39;</span>
+</code></pre>
+
+<a href="#deduplication" id="deduplication" style="color: inherit; text-decoration: none;">
+  <h3>Deduplication</h3>
+</a>
+<p>Deduplicates contacts using the following fields:</p>
+<ul>
+<li><code>FN</code> - full name</li>
+<li><code>N</code> - name components</li>
+<li><code>TEL</code> - phone number</li>
+<li><code>EMAIL</code> - email</li>
+</ul>
+<p><code>vCardEngine.fscrub</code> is customized using callbacks for:</p>
+<ul>
+<li>features - what <code>vCard</code> properties are used for matching</li>
+<li>matches - how <code>vCard</code> features are compared</li>
+<li>merging - how two matching <code>vCards</code> are combined</li>
+</ul>
+<pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">payload</span><span class="hl-1"> = </span><span class="hl-6">readFileSync</span><span class="hl-1">(</span><span class="hl-3">&#39;/path/to/duplicate-contacts.vcf&#39;</span><span class="hl-1">, </span><span class="hl-3">&#39;utf-8&#39;</span><span class="hl-1">);</span><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">engine</span><span class="hl-1"> = </span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-6">vCardEngine</span><span class="hl-1">(</span><span class="hl-2">payload</span><span class="hl-1">);</span><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">scrubbed</span><span class="hl-1"> = </span><span class="hl-2">engine</span><span class="hl-1">.</span><span class="hl-6">fscrub</span><span class="hl-1">(</span><span class="hl-2">engine</span><span class="hl-1">.</span><span class="hl-2">vcardFeatures</span><span class="hl-1">.</span><span class="hl-6">bind</span><span class="hl-1">(</span><span class="hl-2">engine</span><span class="hl-1">),</span><br/><span class="hl-1">                               </span><span class="hl-2">engine</span><span class="hl-1">.</span><span class="hl-2">vcardMatch</span><span class="hl-1">.</span><span class="hl-6">bind</span><span class="hl-1">(</span><span class="hl-2">engine</span><span class="hl-1">),</span><br/><span class="hl-1">                               </span><span class="hl-2">engine</span><span class="hl-1">.</span><span class="hl-2">vcardMerge</span><span class="hl-1">.</span><span class="hl-6">bind</span><span class="hl-1">(</span><span class="hl-2">engine</span><span class="hl-1">));</span>
+</code></pre>
+</div></div>
+<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+<div class="tsd-navigation settings">
+<details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg> Settings</h3></summary>
+<div class="tsd-accordion-details">
+<div class="tsd-filter-visibility">
+<h4 class="uppercase">Member Visibility</h4><form>
+<ul id="tsd-filter-options">
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-private" name="private"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Private</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></form></div>
+<div class="tsd-theme-toggle">
+<h4 class="uppercase">Theme</h4><select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
+<nav class="tsd-navigation primary">
+<details class="tsd-index-accordion" open><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg> Modules</h3></summary>
+<div class="tsd-accordion-details">
+<ul>
+<li class="current selected"><a href="modules.html">vcardz</a>
+<ul></ul></li></ul></div></details></nav>
+<nav class="tsd-navigation secondary menu-sticky">
+<ul>
+<li class="tsd-kind-class"><a href="classes/Address.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-class)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-128-path"></rect><path d="M11.898 16.1201C11.098 16.1201 10.466 15.8961 10.002 15.4481C9.53803 15.0001 9.30603 14.3841 9.30603 13.6001V9.64012C9.30603 8.85612 9.53803 8.24012 10.002 7.79212C10.466 7.34412 11.098 7.12012 11.898 7.12012C12.682 7.12012 13.306 7.34812 13.77 7.80412C14.234 8.25212 14.466 8.86412 14.466 9.64012H13.386C13.386 9.14412 13.254 8.76412 12.99 8.50012C12.734 8.22812 12.37 8.09212 11.898 8.09212C11.426 8.09212 11.054 8.22412 10.782 8.48812C10.518 8.75212 10.386 9.13212 10.386 9.62812V13.6001C10.386 14.0961 10.518 14.4801 10.782 14.7521C11.054 15.0161 11.426 15.1481 11.898 15.1481C12.37 15.1481 12.734 15.0161 12.99 14.7521C13.254 14.4801 13.386 14.0961 13.386 13.6001H14.466C14.466 14.3761 14.234 14.9921 13.77 15.4481C13.306 15.8961 12.682 16.1201 11.898 16.1201Z" fill="var(--color-text)" id="icon-128-text"></path></svg>Address</a></li>
+<li class="tsd-kind-class"><a href="classes/Atom.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>Atom</a></li>
+<li class="tsd-kind-class"><a href="classes/Bag.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>Bag</a></li>
+<li class="tsd-kind-class"><a href="classes/Categories.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>Categories</a></li>
+<li class="tsd-kind-class"><a href="classes/Name.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>Name</a></li>
+<li class="tsd-kind-class"><a href="classes/Phone.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>Phone</a></li>
+<li class="tsd-kind-class"><a href="classes/RssEngine.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>Rss<wbr/>Engine</a></li>
+<li class="tsd-kind-class"><a href="classes/Tag.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>Tag</a></li>
+<li class="tsd-kind-class"><a href="classes/iCalEngine.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>i<wbr/>Cal<wbr/>Engine</a></li>
+<li class="tsd-kind-class"><a href="classes/iCalReader.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>i<wbr/>Cal<wbr/>Reader</a></li>
+<li class="tsd-kind-class"><a href="classes/vCard.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>v<wbr/>Card</a></li>
+<li class="tsd-kind-class"><a href="classes/vCardEngine.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>v<wbr/>Card<wbr/>Engine</a></li>
+<li class="tsd-kind-class"><a href="classes/vCardProxy.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>v<wbr/>Card<wbr/>Proxy</a></li>
+<li class="tsd-kind-class"><a href="classes/vCardReader.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>v<wbr/>Card<wbr/>Reader</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/IAttributes.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-interface)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-256-path"></rect><path d="M9.51 16V15.016H11.298V8.224H9.51V7.24H14.19V8.224H12.402V15.016H14.19V16H9.51Z" fill="var(--color-text)" id="icon-256-text"></path></svg>IAttributes</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/ICard.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>ICard</a></li>
+<li class="tsd-kind-variable"><a href="variables/VCARD_CATEGORIES.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-variable)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-32-path"></rect><path d="M11.106 16L8.85 7.24H9.966L11.454 13.192C11.558 13.608 11.646 13.996 11.718 14.356C11.79 14.708 11.842 14.976 11.874 15.16C11.906 14.976 11.954 14.708 12.018 14.356C12.09 13.996 12.178 13.608 12.282 13.192L13.758 7.24H14.85L12.582 16H11.106Z" fill="var(--color-text)" id="icon-32-text"></path></svg>VCARD_<wbr/>CATEGORIES</a></li>
+<li class="tsd-kind-variable"><a href="variables/VCARD_FN.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-32-path"></use><use href="#icon-32-text"></use></svg>VCARD_<wbr/>FN</a></li>
+<li class="tsd-kind-variable"><a href="variables/VCARD_N.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-32-path"></use><use href="#icon-32-text"></use></svg>VCARD_<wbr/>N</a></li></ul></nav></div></div>
+<div class="container tsd-generator">
+<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div>
+<div class="overlay"></div><script src="assets/main.js"></script></body></html>
