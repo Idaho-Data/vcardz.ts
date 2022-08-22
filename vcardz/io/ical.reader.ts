@@ -11,6 +11,10 @@ import * as assert from 'assert';
 import { DateTime } from 'luxon';
 
 
+/**
+ * @beta
+ * @category io
+ */
 export class iCalReader {
   public static fromString(payload: string[]): iCal {
     let inEvent = false;

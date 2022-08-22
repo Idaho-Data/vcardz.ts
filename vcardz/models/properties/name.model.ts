@@ -1,6 +1,20 @@
 import { Bag } from '../bag.model';
 
 
+/**
+ * `Name` has helper properties for the individual name components.
+ * ```ts
+ * let foo = new Name('N:Doe;John;Q;Mr.;Esq.');
+ *
+ * foo.first === 'John'
+ * foo.last === 'Doe'
+ * foo.middle === 'Q'
+ * foo.prefix === 'Mr.'
+ * foo.suffix === 'Esq.'
+ * ```
+ *
+ * @category models/properties
+ */
 export class Name extends Bag {
   private _last: string;
   private _first: string;

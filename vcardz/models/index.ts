@@ -5,3 +5,6 @@ export * from './icard.interface';
 export * from './tag.model';
 export * from './vcard.model';
 export * from './vcard.proxy';
+
+export * from './properties';
+

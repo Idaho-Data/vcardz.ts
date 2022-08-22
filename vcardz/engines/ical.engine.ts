@@ -3,6 +3,10 @@ import { Utility } from '../io/utility';
 import { iCalReader } from '../io';
 
 
+/**
+ * @beta
+ * @category engines
+ */
 export class iCalEngine {
   protected _inCal: boolean = false;
 

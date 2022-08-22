@@ -19,6 +19,7 @@
   ],
   "license": "GPLv2",
   "scripts": {
+    "docs": "typedoc --out docs vcardz/index.ts",
     "test": "ts-node spec/index.spec.ts || true",
     "test-ide": "node --require ts-node/register spec/index.spec.ts || true",
     "jasmine": "jasmine",
@@ -35,6 +36,7 @@
     "jasmine-ts": "^0.4.0",
     "string-metric": "^0.3.3",
     "ts-node": "^10.9.1",
+    "typedoc": "^0.23.10",
     "typescript": "^4.7.4"
   },
   "dependencies": {

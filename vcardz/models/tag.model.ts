@@ -4,11 +4,51 @@ import assert = require('assert');
 const MurmurHash3 = require('imurmurhash');
 
 
+/**
+ * A vCard tag *e.g.* `FN` in `FN:John Doe`.
+ * Tags are created automatically by {@link Atom} and {@link Bag}
+ * objects.
+ *
+ * @category models
+ */
 export class Tag {
+  /**
+   * @internal
+   * @protected
+   */
   protected _group: string = '';
+  /**
+   * @internal
+   * @protected
+   */
   protected _prop: string = '';
+  /**
+   * @internal
+   * @protected
+   */
   protected _attr: Map<string, Set<string>> = new Map<string, Set<string>>();
 
+
+  /**
+   * Creates a new `Tag` from a vCard field string.
+   * @example
+   * ```ts
+   * let foo = new Tag('FN:John Doe');
+   *
+   * foo.prop === 'FN'
+   * ```
+   *
+   * @example
+   * ```ts
+   * let foo = new Tag('item3.URL;type=pref:http\\://www.example.com/doe');
+   *
+   * foo.prop === 'URL';
+   * foo.group === 'item3';
+   * foo.attr === {TYPE: ['pref']}
+   * ```
+   *at
+   * @param _data - vCard field string
+   */
   public constructor(_data: string) {
     try {
       // negative look-behind assertion
@@ -57,6 +97,9 @@ export class Tag {
   // properties
   //
   // hash
+  /**
+   * Returns a [MurmurHash3](https://github.com/jensyt/imurmurhash-js) value of the Tag
+   */
   public get hash(): number {
     return MurmurHash3(this.toString()).result();
   }
@@ -79,7 +122,19 @@ export class Tag {
     this._prop = val;
   }
 
-  // attr
+
+  /**
+   * Get the tag's attributes
+   * @example
+   * ```ts
+   * let foo = tag.attr;
+   *
+   * foo === {TYPE: ['pref']}
+   * ```
+   *
+   * @returns
+   * an object with `string` or `string[]` values
+   */
   public get attr(): IAttributes {
     if (this._attr.size === 0) {
       return {};
@@ -98,6 +153,16 @@ export class Tag {
                 });
   }
 
+
+  /**
+   * Set the tag's attributes
+   * @example
+   * ```ts
+   * tag.attr = {TYPE: ['pref']};
+   * ```
+   *
+   * @param attributes - an object with `string` or `string[]` values
+   */
   public set attr(attributes: IAttributes) {
     Object.keys(attributes)
           .forEach(key => {
@@ -109,7 +174,16 @@ export class Tag {
           });
   }
 
-
+  /**
+   * Returns the tag's vCard string
+   *
+   * @example
+   * ```ts
+   * let foo = tag.toString();
+   *
+   * foo === 'item3.URL;TYPE=pref';
+   * ```
+   */
   public toString(): string {
     if (!this._prop) {
       return '';
@@ -138,6 +212,9 @@ export class Tag {
   }
 
 
+  /**
+   * Called by `JSON.stringify`
+   */
   public toJSON(): object {
     return {
       prop: this._prop,
@@ -147,6 +224,18 @@ export class Tag {
   }
 
 
+  /**
+   * Create a `Tag` object from plain old object.
+   * @param obj - object with tag properties
+   *
+   * @returns a `Tag` object if `obj` is valid; otherwise `undefined`
+   *
+   * @example
+   * ```ts
+   * const obj = {prop: 'URL', group: 'item3', attr: {TYPE: ['pref']}};
+   * const tag = Tag.fromObject(obj);
+   * ```
+   */
   public static fromObject(obj: any): Tag {
     assert(obj !== undefined);
 

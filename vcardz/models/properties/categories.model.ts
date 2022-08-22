@@ -1,6 +1,11 @@
 import { Bag } from '../bag.model';
 
 
+/**
+ * A {@link Bag} that tokenizes on commas.
+ *
+ * @category models/properties
+ */
 export class Categories extends Bag {
 
   public constructor(data: string) {

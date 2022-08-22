@@ -1,6 +1,20 @@
 import { Bag } from '../bag.model';
 
 
+/**
+ * `Address` has helper properties for the individual address components.
+ * ```ts
+ * let foo = new Address('item1.ADR;TYPE=WORK:;;2 Enterprise Avenue;Worktown;NY;01111;USA');
+ *
+ * foo.street === '2 Enterprise Avenue`
+ * foo.city === 'Worktown'
+ * foo.region === 'NY'
+ * foo.postalCode === '01111'
+ * foo.country === 'USA'
+ * ```
+ *
+ * @category models/properties
+ */
 export class Address extends Bag {
   public poBox: string; // PO Box 888
   public extended: string; // Suite 44

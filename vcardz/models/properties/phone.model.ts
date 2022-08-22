@@ -1,6 +1,11 @@
 import { Atom } from '../atom.model';
 import { Utility } from '../../io/utility';
 
+
+/**
+ *
+ * @category models/properties
+ */
 export class Phone extends Atom {
   public constructor(data: string) {
     if (!data.match(Utility.numbersOnly)) {

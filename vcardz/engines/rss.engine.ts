@@ -6,6 +6,10 @@ import { XMLParser } from 'fast-xml-parser';
 import { plainToClass } from 'class-transformer';
 
 
+/**
+ * @alpha
+ * @category engines
+ */
 export class RssEngine {
   _feed: Rss = new Rss();
 

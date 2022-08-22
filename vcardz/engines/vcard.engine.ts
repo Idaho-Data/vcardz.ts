@@ -15,6 +15,21 @@ import {
 } from '../models/properties';
 
 
+/**
+ * `vCardEngine` parses vCard strings and deduplicates lists of vCards.
+ *
+ * @remark
+ * The easiest way to parse a vCard string and get an array of cards:
+ * @example
+ * ```ts
+ * const engine = new vCardEngine(vcard_data);
+ * let cards = [...engine.run()];
+ *
+ * cards === vCard[]
+ * ```
+ *
+ * @category engines
+ */
 export class vCardEngine {
   protected _inCard: boolean = false;
   protected static JAROWINKLER_MATCH = 0.95;

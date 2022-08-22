@@ -1,7 +1,27 @@
 import { Tag, vCard } from '../models';
 
 
+/**
+ * Creates a {@link vCard} from an array of strings, each item corresponding to a vCard field string.
+ *
+ * @example
+ * ```ts
+ * let input = ['BEGIN:VCARD:',
+ *              'VERSION:4.0',
+ *              'FN:John Doe',
+ *              'END:VCARD'
+ *              ];
+ * let vcard = vCardReader.fromString(input);
+ * ```
+ *
+ * @category io
+ */
 export class vCardReader {
+
+  /**
+   * This is probably improperly named but we're sticking with it.
+   * @param payload
+   */
   public static fromString(payload: string[]): vCard {
     // fix multi-line values
     let fixed = [] as string[];
